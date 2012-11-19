@@ -23,7 +23,7 @@ $width: 940px;
 
 /* -----------------------------------------
    Defaults
------------------------------------------ */
+----------------------------------------- 
 
 @font-face {
     font-family: 'ChaparralProRegular';
@@ -34,7 +34,7 @@ $width: 940px;
          url(<%= asset_path 'chaparralpro-regular-webfont.svg' %>#ChaparralProRegular) format('svg');
     font-weight: normal;
     font-style: normal;
-}
+}*/
 
 article,
 aside,
@@ -104,7 +104,7 @@ img {
 body {
   padding: 40px 0;
   font-family: 'ChaparralProRegular', Georgia;
-  background: $sand url(<%= asset_path 'sand.jpg' %>);
+  //background: $sand url(<%= asset_path 'sand.jpg' %>);
   color: $text;
   font-size: 16px;
 }
@@ -134,7 +134,7 @@ img, .page {
   width: $width;
   padding: 32px;
   margin: 0 auto;
-  background: $paper url(<%= asset_path 'paper.jpg' %>);
+  //background: $paper url(<%= asset_path 'paper.jpg' %>);
 }
 
 header {

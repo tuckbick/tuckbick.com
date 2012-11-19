@@ -1,7 +1,8 @@
 @import url(http://fonts.googleapis.com/css?family=Rokkitt);
 /* -----------------------------------------
- *    Defaults
- *    ----------------------------------------- */
+   Defaults
+----------------------------------------- */
+/* line 25, ../scss/home.scss */
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -24,74 +25,111 @@ time, mark, audio, video {
   box-sizing: border-box;
   -moz-background-clip: padding;
   -webkit-background-clip: padding-box;
-  background-clip: padding-box; }
+  background-clip: padding-box;
+}
 
+/* line 37, ../scss/home.scss */
 html {
-  font-size: 10px; }
+  font-size: 10px;
+}
 
+/* line 41, ../scss/home.scss */
 article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
-  display: block; }
+  display: block;
+}
 
+/* line 44, ../scss/home.scss */
 body {
-  line-height: 1; }
+  line-height: 1;
+}
 
+/* line 47, ../scss/home.scss */
 ol, ul {
-  list-style: none; }
+  list-style: none;
+}
 
+/* line 50, ../scss/home.scss */
 img {
   max-width: 100%;
   height: auto;
   width: auto\9;
-  /* ie8 */ }
+  /* ie8 */
+}
 
 /* -----------------------------------------
- *    Scaffolding
- *    ----------------------------------------- */
+   Scaffolding
+----------------------------------------- */
+/* line 62, ../scss/home.scss */
 .row {
   width: 100%;
-  *zoom: 1; }
-  .row:before, .row:after {
-    content: "";
-    display: table; }
-  .row:after {
-    clear: both; }
-  .row .col {
-    float: left; }
+  *zoom: 1;
+}
+/* line 66, ../scss/home.scss */
+.row:before, .row:after {
+  content: "";
+  display: table;
+}
+/* line 70, ../scss/home.scss */
+.row:after {
+  clear: both;
+}
+/* line 73, ../scss/home.scss */
+.row .col {
+  float: left;
+}
 
 /* -----------------------------------------
- *    Specifics.
- *    ----------------------------------------- */
+   Specifics.
+----------------------------------------- */
+/* line 87, ../scss/home.scss */
 body {
   font-family: 'Rokkitt', Georgia, serif;
   background: whitesmoke;
   color: #0a0a0a;
   text-align: center;
-  letter-spacing: 1px; }
+  letter-spacing: 1px;
+}
 
+/* line 95, ../scss/home.scss */
 a {
   text-decoration: none;
   color: #0a0a0a;
-  padding: 0 0.25em; }
-  a:hover {
-    background-color: #0a0a0a;
-    color: whitesmoke; }
-  a:active, a:visited, a:focus {
-    outline: none; }
+  padding: 0 0.25em;
+}
+/* line 100, ../scss/home.scss */
+a:hover {
+  background-color: #0a0a0a;
+  color: whitesmoke;
+}
+/* line 104, ../scss/home.scss */
+a:active, a:visited, a:focus {
+  outline: none;
+}
 
+/* line 109, ../scss/home.scss */
 .wrapper {
   max-width: 720px;
-  margin: 5em auto; }
-  .wrapper header h1 {
-    font-size: 5em; }
-  .wrapper nav {
-    font-size: 1.6em;
-    margin: 1.2em 0 3em; }
-    .wrapper nav .del {
-      display: inline-block;
-      font-size: 0.56em;
-      margin: 0 1em; }
-  .wrapper .contact {
-    font-size: 2.4em;
-    margin-top: 2em;
-    line-height: 1.45; }
+  margin: 5em auto;
+}
+/* line 113, ../scss/home.scss */
+.wrapper header h1 {
+  font-size: 5em;
+}
+/* line 117, ../scss/home.scss */
+.wrapper nav {
+  font-size: 1.6em;
+  margin: 1.2em 0 3em;
+}
+/* line 121, ../scss/home.scss */
+.wrapper nav .del {
+  display: inline-block;
+  font-size: 0.56em;
+  margin: 0 1em;
+}
+/* line 128, ../scss/home.scss */
+.wrapper .contact {
+  font-size: 2.4em;
+  margin-top: 2em;
+  line-height: 1.45;
+}
