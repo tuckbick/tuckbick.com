@@ -3,18 +3,15 @@
 ----------------------------------------- */
 /* -----------------------------------------
    Defaults
------------------------------------------ 
-
+----------------------------------------- */
 @font-face {
-    font-family: 'ChaparralProRegular';
-    src: url(<%= asset_path 'chaparralpro-regular-webfont.eot' %>);
-    src: url(<%= asset_path 'chaparralpro-regular-webfont.eot' %>?#iefix) format('embedded-opentype'),
-         url(<%= asset_path 'chaparralpro-regular-webfont.woff' %>) format('woff'),
-         url(<%= asset_path 'chaparralpro-regular-webfont.ttf' %>) format('truetype'),
-         url(<%= asset_path 'chaparralpro-regular-webfont.svg' %>#ChaparralProRegular) format('svg');
-    font-weight: normal;
-    font-style: normal;
-}*/
+  font-family: 'ChaparralProRegular';
+  src: url(/font/chaparralpro-regular-webfont.eot);
+  src: url(/font/chaparralpro-regular-webfont.eot?#iefix) format("embedded-opentype"), url(/font/chaparralpro-regular-webfont.woff) format("woff"), url(/font/chaparralpro-regular-webfont.ttf) format("truetype"), url(/font/chaparralpro-regular-webfont.svg#ChaparralProRegular) format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
 /* line 48, ../scss/resume.scss */
 article,
 aside,
@@ -81,6 +78,7 @@ img {
 body {
   padding: 40px 0;
   font-family: 'ChaparralProRegular', Georgia;
+  background: #d2c1a9 url(/img/sand.jpg);
   color: #383040;
   font-size: 16px;
 }
@@ -115,6 +113,7 @@ img, .page {
   width: 940px;
   padding: 32px;
   margin: 0 auto;
+  background: whitesmoke url(/img/paper.jpg);
 }
 
 /* line 140, ../scss/resume.scss */
