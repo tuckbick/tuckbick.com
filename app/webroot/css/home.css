@@ -1,0 +1,97 @@
+@import url(http://fonts.googleapis.com/css?family=Rokkitt);
+/* -----------------------------------------
+ *    Defaults
+ *    ----------------------------------------- */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  vertical-align: baseline;
+  position: relative;
+  box-sizing: border-box;
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box; }
+
+html {
+  font-size: 10px; }
+
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block; }
+
+body {
+  line-height: 1; }
+
+ol, ul {
+  list-style: none; }
+
+img {
+  max-width: 100%;
+  height: auto;
+  width: auto\9;
+  /* ie8 */ }
+
+/* -----------------------------------------
+ *    Scaffolding
+ *    ----------------------------------------- */
+.row {
+  width: 100%;
+  *zoom: 1; }
+  .row:before, .row:after {
+    content: "";
+    display: table; }
+  .row:after {
+    clear: both; }
+  .row .col {
+    float: left; }
+
+/* -----------------------------------------
+ *    Specifics.
+ *    ----------------------------------------- */
+body {
+  font-family: 'Rokkitt', Georgia, serif;
+  background: whitesmoke;
+  color: #0a0a0a;
+  text-align: center;
+  letter-spacing: 1px; }
+
+a {
+  text-decoration: none;
+  color: #0a0a0a;
+  padding: 0 0.25em; }
+  a:hover {
+    background-color: #0a0a0a;
+    color: whitesmoke; }
+  a:active, a:visited, a:focus {
+    outline: none; }
+
+.wrapper {
+  max-width: 720px;
+  margin: 5em auto; }
+  .wrapper header h1 {
+    font-size: 5em; }
+  .wrapper nav {
+    font-size: 1.6em;
+    margin: 1.2em 0 3em; }
+    .wrapper nav .del {
+      display: inline-block;
+      font-size: 0.56em;
+      margin: 0 1em; }
+  .wrapper .contact {
+    font-size: 2.4em;
+    margin-top: 2em;
+    line-height: 1.45; }

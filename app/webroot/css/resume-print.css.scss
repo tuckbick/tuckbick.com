@@ -1,0 +1,146 @@
+// Place all the styles related to the resume controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+/* -----------------------------------------
+   Defaults
+----------------------------------------- */
+
+@font-face {
+    font-family: 'ChaparralProRegular';
+    src: url('../fonts/chaparralpro-regular-webfont.eot');
+    src: url('../fonts/chaparralpro-regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/chaparralpro-regular-webfont.woff') format('woff'),
+         url('../fonts/chaparralpro-regular-webfont.ttf') format('truetype'),
+         url('../fonts/chaparralpro-regular-webfont.svg#ChaparralProRegular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+nav,
+section {
+  display: block;
+}
+
+h1, h2, h3, h4, h5, h6, p, ul, li {
+  margin: 0;
+  padding: 0;
+}
+
+ul {
+  list-style: none;
+}
+
+img {
+  display: block;
+}
+
+* {
+  box-sizing: border-box;
+  position: relative;
+}
+
+
+/* -----------------------------------------
+   Scaffolding
+----------------------------------------- */
+
+
+.row {
+  width: 100%;
+  *zoom: 1;
+
+  &:before, &:after {
+    content: "";
+    display: table;
+  }
+  &:after {
+    clear: both;
+  }
+  .col {
+    float: left;
+  }
+}
+
+
+
+/* -----------------------------------------
+   Specifics.
+   Colors: http://www.colourlovers.com/pattern/2046485/the_world_of_mine
+----------------------------------------- */
+
+body {
+  font-family: 'ChaparralProRegular', Georgia;
+  color: #000000;
+  font-size:13px;
+}
+
+a {
+  color: #000000;
+  text-decoration: none;
+}
+
+.page {
+  margin: 0 auto;
+}
+
+header {
+  padding: 0 0 2em;
+  
+  h1 {
+    line-height: .8em;
+    font-size: 3em;
+    float: left;
+  }
+  .contact {
+    font-size: 1em;
+    float: right;
+    text-align: right;
+    position: absolute;
+    right: 0;
+  }
+}
+
+.kittehs {
+  display: none;
+}
+
+
+.content .area {
+  margin-top: 1.5em;
+
+  h2 {
+    margin-bottom: 0.5em;
+  }
+  .info {
+      padding-left: 1em;
+
+    .slice {
+      margin-bottom: .75em;
+
+      p {
+        line-height: 1.2em;
+        margin-top: 0.5em;
+        text-indent: -1em;
+
+        &:first-child a {
+          color: inherit;
+        }
+      }
+    }
+  }
+}
+
+
+
+.area:first-child, .area .info .slice:first-child, .area .info .slice p:first-child {
+  margin-top: 0;
+}
