@@ -143,11 +143,13 @@ Cache::config('default', array('engine' => 'File'));
  *
  */
 
+/*
 CakePlugin::loadAll(array(
-	// 'Admin' => array(
-	// 	'bootstrap' => true
-	// )
+	 'Admin' => array(
+	 	'bootstrap' => true
+	 )
 ));
+*/
 
 function adminIsAuthorized()
 {
