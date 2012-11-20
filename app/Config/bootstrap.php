@@ -142,11 +142,12 @@ Cache::config('default', array('engine' => 'File'));
  * CakePlugin::load('DebugKit'); //Loads a single plugin named DebugKit
  *
  */
+
 /*
 CakePlugin::loadAll(array(
-	'Admin' => array(
-		'bootstrap' => true
-	)
+	 'Admin' => array(
+	 	'bootstrap' => true
+	 )
 ));
 */
 
