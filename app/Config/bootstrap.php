@@ -151,6 +151,7 @@ CakePlugin::loadAll(array(
 
 function adminIsAuthorized()
 {
+    /* TODO: check if user is logged in */ 
     if (false) {
         return true;
     }

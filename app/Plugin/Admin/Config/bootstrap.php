@@ -14,17 +14,21 @@
  */
 
 App::uses('CakeRequest', 'Network');
-
+/*
 $adminIsAuthorized = (function_exists('adminIsAuthorized')) ? adminIsAuthorized() : true;
 if ($adminIsAuthorized === false) {
     throw new MethodNotAllowedException();
 }
-
+*/
 $Request = new CakeRequest();
 if (isset($Request->url)) {
     $parts = explode('/', $Request->url);
     if ((isset($parts[0])) && ($parts[0] == 'admin')) {
-        if (isset($parts[1])) {
+        $adminIsAuthorized = (function_exists('adminIsAuthorized')) ? adminIsAuthorized() : true;
+	if ($adminIsAuthorized === false) {
+    		throw new MethodNotAllowedException();
+	}
+	if (isset($parts[1])) {
             $modelClassName = Inflector::camelize(Inflector::singularize($parts[1]));
             $controllerClassName = Inflector::camelize($parts[1]) . 'Controller';
             $controllerClass = 'App::uses(\'AdminAppController\',\'Admin.Controller\');class ' . $controllerClassName . ' extends AdminAppController{public $uses = \'' . $modelClassName . '\';}';
