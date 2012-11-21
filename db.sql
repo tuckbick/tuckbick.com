@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Nov 21, 2012 at 01:07 AM
+-- Generation Time: Nov 21, 2012 at 01:11 AM
 -- Server version: 5.5.25
 -- PHP Version: 5.4.4
 
@@ -26,6 +26,7 @@ SET time_zone = "+00:00";
 -- Table structure for table `projects`
 --
 
+DROP TABLE IF EXISTS `projects`;
 CREATE TABLE `projects` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `title` varchar(200) COLLATE utf8_unicode_ci DEFAULT NULL,
