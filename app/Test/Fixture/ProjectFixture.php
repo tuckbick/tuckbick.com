@@ -31,13 +31,13 @@ class ProjectFixture extends CakeTestFixture {
  */
 	public $records = array(
 		array(
-			'id' => 1,
-			'title' => 'Lorem ipsum dolor sit amet',
-			'demo_url' => 'Lorem ipsum dolor sit amet',
-			'src_url' => 'Lorem ipsum dolor sit amet',
-			'body' => 'Lorem ipsum dolor sit amet, aliquet feugiat. Convallis morbi fringilla gravida, phasellus feugiat dapibus velit nunc, pulvinar eget sollicitudin venenatis cum nullam, vivamus ut a sed, mollitia lectus. Nulla vestibulum massa neque ut et, id hendrerit sit, feugiat in taciti enim proin nibh, tempor dignissim, rhoncus duis vestibulum nunc mattis convallis.',
-			'created' => '2012-11-20 17:56:51',
-			'modified' => '2012-11-20 17:56:51'
+			'id' => '1',
+			'title' => 'Pool',
+			'demo_url' => 'http://sharp-light-9215.herokuapp.com/',
+			'src_url' => 'https://github.com/tuckbick/Listr',
+			'body' => 'A simple tool for creating lists on-the-go.',
+			'created' => '2012-11-21 00:43:32',
+			'modified' => '2012-11-21 00:44:50'
 		),
 	);
 
