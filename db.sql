@@ -31,7 +31,7 @@ CREATE TABLE `projects` (
   `created` datetime DEFAULT NULL,
   `modified` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -40,7 +40,7 @@ CREATE TABLE `projects` (
 
 LOCK TABLES `projects` WRITE;
 /*!40000 ALTER TABLE `projects` DISABLE KEYS */;
-INSERT INTO `projects` VALUES (1,'Pool','http://sharp-light-9215.herokuapp.com/','https://github.com/tuckbick/Listr','A simple tool for creating lists on-the-go.','2012-11-21 00:43:32','2012-11-21 00:44:50');
+INSERT INTO `projects` VALUES (1,'Listr','http://sharp-light-9215.herokuapp.com/','https://github.com/tuckbick/Listr','A simple tool for creating lists on-the-go.','2012-11-21 00:43:32','2012-11-21 19:02:07'),(2,'Pool','http://localhost:3000/','https://github.com/tuckbick/Pool','Share photos with your friends! Live!','2012-11-21 19:01:40','2012-11-21 19:01:40');
 /*!40000 ALTER TABLE `projects` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -53,4 +53,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2012-11-20 18:24:06
+-- Dump completed on 2012-11-22  2:57:04

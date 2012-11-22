@@ -1,0 +1,202 @@
+@import url(http://fonts.googleapis.com/css?family=Arvo);
+// @import url(http://fonts.googleapis.com/css?family=Arvo:400,700);
+@import url(http://fonts.googleapis.com/css?family=PT+Sans);
+
+@import "compass/css3/box-shadow";
+@import "compass/css3/transition";
+
+
+
+/* -----------------------------------------
+   Defaults
+----------------------------------------- */
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  vertical-align: baseline;
+  position: relative;
+  box-sizing: border-box;
+     -moz-background-clip: padding;
+  -webkit-background-clip: padding-box;
+          background-clip: padding-box;
+}
+html {
+  font-size: 10px;
+}
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+body {
+  line-height: 1;
+}
+ol, ul {
+  list-style: none;
+}
+img {
+  max-width: 100%;
+  height: auto;
+  width: auto\9; /* ie8 */
+}
+
+
+/* -----------------------------------------
+   Scaffolding
+----------------------------------------- */
+
+
+.row {
+  width: 100%;
+  *zoom: 1;
+
+  &:before, &:after {
+    content: "";
+    display: table;
+  }
+  &:after {
+    clear: both;
+  }
+  .col {
+    float: left;
+  }
+}
+
+
+/* -----------------------------------------
+   Styling.
+----------------------------------------- */
+
+$gray: #828582;
+$white: #F5F5F5;
+$red: #7F2135;
+$pink: #FBC8C7;
+$gold: #89804F;
+$green: #486F70;
+
+html {
+    height: 100%;
+}
+body {
+  background: $gray;
+  font-family: 'PT Sans', sans-serif;
+  position: static;
+}
+
+a, body {
+  color: $white;
+}
+
+h1, h2, h3 {
+    font-family: 'Arvo', serif;
+}
+
+.wrapper {
+    // margin-top: 2em;
+}
+
+.page-title {
+    text-align: center;
+    font-size: 4em;
+    margin: 1em 0;
+    font-weight: bold;
+}
+
+#project-list {
+    margin: 0 1em;
+
+    & > li {
+        width: (100%/3);
+        float: left;
+        margin-bottom: 2em;
+    }
+}
+.project {
+    padding: 2em 2em;
+    margin: 0 1em;
+    height: 150px;
+    @include transition(background-color 0.1s ease-in-out 0, box-shadow 0.1s ease-in-out 0);
+
+    .row {
+        margin-top: 1em;
+    }
+    &:hover {
+        background-color: lighten($gray, 10%);
+        @include single-box-shadow(rgba(0, 0, 0, 0.25), 0, 0, 20px);
+    }
+}
+.project-title {
+    font-size: 2.5em;
+}
+.links li {
+    float: left;
+    margin-left: 1em;
+    font-size: 1.5em;
+
+    &:first-child {
+        margin-left: 0;
+    }
+    i {
+        color: $pink;
+    }
+}
+a:hover {
+    color: $green;
+}
+.body {
+    font-size: 1.5em;
+}
+
+
+// Medium Screens
+@media all and (max-width: 1024px) {
+    #project-list > li {
+        width: (100%/2);
+    }
+}
+
+
+// Small Screens
+@media all and (max-width: 640px) {
+    #project-list {
+        margin: 0;
+
+        & > li {
+            width: (100%/1);
+            margin-bottom: 1em;
+        }
+    }
+    .project {
+        padding: 1em;
+    }
+}
+
+#bg {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    .b {
+        position: absolute;
+    }
+    .c0 { background-color: $pink; }
+    .c1 { background-color: $red; }
+    .c2 { background-color: $gold; }
+    .c3 { background-color: $green; }
+}

@@ -1,0 +1,229 @@
+@import url(http://fonts.googleapis.com/css?family=Arvo);
+@import url(http://fonts.googleapis.com/css?family=PT+Sans);
+/* -----------------------------------------
+   Defaults
+----------------------------------------- */
+/* line 26, ../scss/projects.scss */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  vertical-align: baseline;
+  position: relative;
+  box-sizing: border-box;
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+}
+
+/* line 38, ../scss/projects.scss */
+html {
+  font-size: 10px;
+}
+
+/* line 42, ../scss/projects.scss */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+/* line 45, ../scss/projects.scss */
+body {
+  line-height: 1;
+}
+
+/* line 48, ../scss/projects.scss */
+ol, ul {
+  list-style: none;
+}
+
+/* line 51, ../scss/projects.scss */
+img {
+  max-width: 100%;
+  height: auto;
+  width: auto\9;
+  /* ie8 */
+}
+
+/* -----------------------------------------
+   Scaffolding
+----------------------------------------- */
+/* line 63, ../scss/projects.scss */
+.row {
+  width: 100%;
+  *zoom: 1;
+}
+/* line 67, ../scss/projects.scss */
+.row:before, .row:after {
+  content: "";
+  display: table;
+}
+/* line 71, ../scss/projects.scss */
+.row:after {
+  clear: both;
+}
+/* line 74, ../scss/projects.scss */
+.row .col {
+  float: left;
+}
+
+/* -----------------------------------------
+   Styling.
+----------------------------------------- */
+/* line 91, ../scss/projects.scss */
+html {
+  height: 100%;
+}
+
+/* line 94, ../scss/projects.scss */
+body {
+  background: #828582;
+  font-family: 'PT Sans', sans-serif;
+  position: static;
+}
+
+/* line 100, ../scss/projects.scss */
+a, body {
+  color: whitesmoke;
+}
+
+/* line 104, ../scss/projects.scss */
+h1, h2, h3 {
+  font-family: 'Arvo', serif;
+}
+
+/* line 112, ../scss/projects.scss */
+.page-title {
+  text-align: center;
+  font-size: 4em;
+  margin: 1em 0;
+  font-weight: bold;
+}
+
+/* line 119, ../scss/projects.scss */
+#project-list {
+  margin: 0 1em;
+}
+/* line 122, ../scss/projects.scss */
+#project-list > li {
+  width: 33.33333%;
+  float: left;
+  margin-bottom: 2em;
+}
+
+/* line 128, ../scss/projects.scss */
+.project {
+  padding: 2em 2em;
+  margin: 0 1em;
+  height: 150px;
+  -webkit-transition: background-color 0.1s ease-in-out, box-shadow 0.1s ease-in-out;
+  -webkit-transition-delay: 0, 0;
+  -moz-transition: background-color 0.1s ease-in-out 0, box-shadow 0.1s ease-in-out 0;
+  -o-transition: background-color 0.1s ease-in-out 0, box-shadow 0.1s ease-in-out 0;
+  transition: background-color 0.1s ease-in-out 0, box-shadow 0.1s ease-in-out 0;
+}
+/* line 134, ../scss/projects.scss */
+.project .row {
+  margin-top: 1em;
+}
+/* line 137, ../scss/projects.scss */
+.project:hover {
+  background-color: #9c9e9c;
+  -webkit-box-shadow: 0 0 20px rgba(0, 0, 0, 0.25);
+  -moz-box-shadow: 0 0 20px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.25);
+}
+
+/* line 142, ../scss/projects.scss */
+.project-title {
+  font-size: 2.5em;
+}
+
+/* line 145, ../scss/projects.scss */
+.links li {
+  float: left;
+  margin-left: 1em;
+  font-size: 1.5em;
+}
+/* line 150, ../scss/projects.scss */
+.links li:first-child {
+  margin-left: 0;
+}
+/* line 153, ../scss/projects.scss */
+.links li i {
+  color: #fbc8c7;
+}
+
+/* line 157, ../scss/projects.scss */
+a:hover {
+  color: #486f70;
+}
+
+/* line 160, ../scss/projects.scss */
+.body {
+  font-size: 1.5em;
+}
+
+@media all and (max-width: 1024px) {
+  /* line 167, ../scss/projects.scss */
+  #project-list > li {
+    width: 50%;
+  }
+}
+@media all and (max-width: 640px) {
+  /* line 175, ../scss/projects.scss */
+  #project-list {
+    margin: 0;
+  }
+  /* line 178, ../scss/projects.scss */
+  #project-list > li {
+    width: 100%;
+    margin-bottom: 1em;
+  }
+
+  /* line 183, ../scss/projects.scss */
+  .project {
+    padding: 1em;
+  }
+}
+/* line 188, ../scss/projects.scss */
+#bg {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+/* line 195, ../scss/projects.scss */
+#bg .b {
+  position: absolute;
+}
+/* line 198, ../scss/projects.scss */
+#bg .c0 {
+  background-color: #fbc8c7;
+}
+/* line 199, ../scss/projects.scss */
+#bg .c1 {
+  background-color: #7f2135;
+}
+/* line 200, ../scss/projects.scss */
+#bg .c2 {
+  background-color: #89804f;
+}
+/* line 201, ../scss/projects.scss */
+#bg .c3 {
+  background-color: #486f70;
+}
