@@ -24,6 +24,7 @@
 	<?php echo $this->fetch('script'); ?>
 	<script>
 		// keep navigation within iPhone web app
+		/*
 		$( document ).on( 'click', 'a', function( event ){
 		 
 			// Stop the default behavior of the browser, which
@@ -34,6 +35,7 @@
 			// "Standalone" mode and change the URL at the same time.
 			location.href = $( event.target ).attr( "href" );
 		});
+		*/
 	</script>
 </body>
 </html>
