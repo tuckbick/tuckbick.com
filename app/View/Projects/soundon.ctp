@@ -368,5 +368,8 @@
 
     
   </script>
+  <?php echo $this->element('analytics', array(
+    'title_for_layout' => 'Sound-On'
+  )) ?>
 </body>
 </html>

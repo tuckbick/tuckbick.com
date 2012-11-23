@@ -9,7 +9,7 @@
     <meta name="apple-mobile-web-app-title" content="tuckbick.com">
     <meta http-equiv="cleartype" content="on">
 	<title>
-		tuckbick.com - <?php echo $title_for_layout; ?>
+		tuckbick.com - <?php echo $title_for_layout ?>
 	</title>
 	<?php
 		echo $this->fetch('meta');
@@ -17,25 +17,11 @@
 	?>
 </head>
 <body>
-	<?php echo $this->Session->flash(); ?>
-	<?php echo $this->fetch('content'); ?>
-	<?php echo $this->element('sql_dump'); ?>
+	<?php echo $this->Session->flash() ?>
+	<?php echo $this->fetch('content') ?>
+	<?php echo $this->element('sql_dump') ?>
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
-	<?php echo $this->fetch('script'); ?>
-	<script>
-		// keep navigation within iPhone web app
-		/*
-		$( document ).on( 'click', 'a', function( event ){
-		 
-			// Stop the default behavior of the browser, which
-			// is to change the URL of the page.
-			event.preventDefault();
-			 
-			// Manually change the location of the page to stay in
-			// "Standalone" mode and change the URL at the same time.
-			location.href = $( event.target ).attr( "href" );
-		});
-		*/
-	</script>
+	<?php echo $this->fetch('script') ?>
+	<?php echo $this->element('analytics') ?>
 </body>
 </html>
