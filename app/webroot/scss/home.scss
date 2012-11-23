@@ -80,9 +80,8 @@ img {
    Specifics.
 ----------------------------------------- */
 
-  $title_size: 5.0em;
-    $nav_size: 1.6em;
-$contact_size: 2.4em;
+   $base_size: 5.0em;
+$base_size_sm: 3.3em;
 
 body {
   font-family: 'Rokkitt', Georgia, serif;
@@ -108,47 +107,46 @@ a {
 
 .wrapper {
   max-width: $width;
-  margin: $title_size auto;
+  margin: $base_size auto;
+}
 
+header h1 {
+  font-size: $base_size;
+}
+
+nav {
+  font-size: $base_size*0.32;
+  margin: 1.2em 0 $base_size*0.6;
+
+  .del {
+    display: inline-block;
+    font-size: 0.56em;
+    margin: 0 1em;
+  }
+}
+
+.contact {
+  font-size: $base_size*0.48;
+  margin-top: $base_size*0.4;
+  line-height: 1.45;
+}
+
+
+@media screen and (max-width: 480px) {
+
+  .wrapper {
+    margin: $base_size_sm*0.5 auto;
+  }
   header h1 {
-    font-size: $title_size;
+    font-size: $base_size_sm;
   }
-
   nav {
-    font-size: $nav_size;
-    margin: 1.2em 0 3em;
-
-    .del {
-      display: inline-block;
-      font-size: 0.56em;
-      margin: 0 1em;
-    }
+    margin-top: $base_size_sm*0.2;
+    margin-bottom: $base_size_sm*0.4;
   }
-
   .contact {
-    font-size: $contact_size;
-    margin-top: 2em;
-    line-height: 1.45;
+    font-size: $base_size_sm*0.48;
+    margin-top: $base_size_sm*0.3;
+    line-height: 2;
   }
-}
-
-
-
-
-
-
-@media screen and (min-width: 0px) and (max-width: 319px) {
-
-}
-
-
-
-@media screen and (min-width: 320px) and (max-width: 479px) {
-
-}
-
-
-
-@media screen and (min-width: 480px) {
-
 }

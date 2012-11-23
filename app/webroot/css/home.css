@@ -82,7 +82,7 @@ img {
 /* -----------------------------------------
    Specifics.
 ----------------------------------------- */
-/* line 87, ../scss/home.scss */
+/* line 86, ../scss/home.scss */
 body {
   font-family: 'Rokkitt', Georgia, serif;
   background: whitesmoke;
@@ -91,45 +91,73 @@ body {
   letter-spacing: 1px;
 }
 
-/* line 95, ../scss/home.scss */
+/* line 94, ../scss/home.scss */
 a {
   text-decoration: none;
   color: #0a0a0a;
   padding: 0 0.25em;
 }
-/* line 100, ../scss/home.scss */
+/* line 99, ../scss/home.scss */
 a:hover {
   background-color: #0a0a0a;
   color: whitesmoke;
 }
-/* line 104, ../scss/home.scss */
+/* line 103, ../scss/home.scss */
 a:active, a:visited, a:focus {
   outline: none;
 }
 
-/* line 109, ../scss/home.scss */
+/* line 108, ../scss/home.scss */
 .wrapper {
   max-width: 720px;
   margin: 5em auto;
 }
+
 /* line 113, ../scss/home.scss */
-.wrapper header h1 {
+header h1 {
   font-size: 5em;
 }
+
 /* line 117, ../scss/home.scss */
-.wrapper nav {
+nav {
   font-size: 1.6em;
   margin: 1.2em 0 3em;
 }
 /* line 121, ../scss/home.scss */
-.wrapper nav .del {
+nav .del {
   display: inline-block;
   font-size: 0.56em;
   margin: 0 1em;
 }
+
 /* line 128, ../scss/home.scss */
-.wrapper .contact {
+.contact {
   font-size: 2.4em;
   margin-top: 2em;
   line-height: 1.45;
+}
+
+@media screen and (max-width: 480px) {
+  /* line 137, ../scss/home.scss */
+  .wrapper {
+    margin: 1.65em auto;
+  }
+
+  /* line 140, ../scss/home.scss */
+  header h1 {
+    font-size: 3.3em;
+  }
+
+  /* line 143, ../scss/home.scss */
+  nav {
+    margin-top: 0.66em;
+    margin-bottom: 1.32em;
+  }
+
+  /* line 147, ../scss/home.scss */
+  .contact {
+    font-size: 1.584em;
+    margin-top: 0.99em;
+    line-height: 2;
+  }
 }
