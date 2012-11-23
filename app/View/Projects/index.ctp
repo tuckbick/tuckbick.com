@@ -64,15 +64,16 @@ $this->end() ?>
 		}
 	}
 
-	var map = new Map();
-	map.draw(0.0125);
+	var map = new Map()
+	  , DENSITY = 0.0125;
+	map.draw(DENSITY);
 
 	window.onresize = (function() {
 		var marker;
 		return function() {
 			clearTimeout(marker);
 			marker = setTimeout(function() {
-				map.draw(0.0125);
+				map.draw(DENSITY);
 			}, 200);
 		}
 	})();
@@ -91,8 +92,16 @@ $this->end() ?>
 			<div class="project">
 				<h3 class="project-title"><?php echo h($project['Project']['title']); ?></h3>
 				<ul class="links row">
-					<li><i>&#9732;</i>&nbsp;<?php echo $this->Html->link('Demo', $project['Project']['demo_url'], array('title' => 'See a Demo')) ?></li>
-					<li><i>&#9774;</i>&nbsp;<?php echo $this->Html->link('Source', $project['Project']['src_url'], array('title' => 'Browse the Source')) ?></li>
+					<?php if ($project['Project']['demo_url']) { ?>
+						<li><i>&#9732;</i>&nbsp;<?php echo $this->Html->link('Demo', $project['Project']['demo_url'], array('title' => 'See a Demo')) ?></li>
+					<?php } else { ?>
+						<li><i>&#9888;</i>&nbsp;<del><?php echo __('Demo') ?></del></li>
+					<?php } ?>
+					<?php if ($project['Project']['src_url']) { ?>
+						<li><i>&#9774;</i>&nbsp;<?php echo $this->Html->link('Source', $project['Project']['src_url'], array('title' => 'Browse the Source')) ?></li>
+					<?php } else { ?>
+						<li><i>&#9888;</i>&nbsp;<del><?php echo __('Source') ?></del></li>
+					<?php } ?>
 				</ul>
 				<p class="body row"><?php echo h($project['Project']['body']); ?></p>
 			</div>
