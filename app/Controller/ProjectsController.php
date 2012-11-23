@@ -20,4 +20,8 @@ class ProjectsController extends AppController {
 		$this->set('projects', $this->Project->find('all'));
 	}
 
+	public function soundon() {
+		$this->layout = false;
+	}
+
 }

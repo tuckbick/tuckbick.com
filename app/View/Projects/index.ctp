@@ -1,5 +1,5 @@
 <?php $this->start('css');
-echo $this->Html->css('projects', null, array('media' => 'screen'));
+echo $this->Html->css('projects', null, array('media' => 'all'));
 $this->end() ?>
 
 <?php $this->start('script') ?>
