@@ -82,19 +82,19 @@ $this->end();
 				<div class="info">
 					<div class="slice">
 						<p>HTML5, HTML4, DOM, JSON </br>
-							WebSockets, Canvas, Geolocation</p>
+							WebSockets, Canvas, Geolocation, File API</p>
 						<p>CSS3, CSS </br>
 							Media Queries, SASS, Compass</p>
 						<p>JavaScript </br>
-							<code>(function(){}).prototype</code>, jQuery, Backbone.js, Knockout, jQuery Mobile</p>
+							<code>(function(){}).prototype</code>, Backbone.js, RequireJS, jQuery, jQuery Mobile</p>
 						<p>NodeJS </br>
-							Express, SocketIO</p>
+							Express, SocketIO, BinaryJS, Grunt, NPM</p>
 						<p>PHP </br>
 							Wordpress, Drupal, CakePHP, Magento, SilverStripe</p>
 						<p>Python </br>
 							Django, Google App Engine</p>
 						<p><em>other</em></br>
-							SQL, YQL, phpMyAdmin, REST, Java, Android, C, C++</p>
+							SQL, YQL, phpMyAdmin, REST, Java, iOS (iPad, iPhone), Android, C, C++</p>
 						<p><em>software</em></br>
 							Sublime Text, PyCharm, Eclipse, OmniGraffle, Photoshop, Illustrator, MS Office Suite, Final Cut Pro</p>
 					</div>
