@@ -1,1 +1,0 @@
-<script type="text/javascript">var _gaq=[['_setAccount','UA-6013405-1'],['_setCustomVar',1,'Page','<?php echo $title_for_layout ?>',3],['_trackPageview']];(function(d){var g=d.createElement('script'),s=d.scripts[0];g.src='//www.google-analytics.com/ga.js';s.parentNode.insertBefore(g,s)}(document))</script>
