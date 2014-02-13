@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html ng-app="tuckbick">
+<head>
+  <title>{{ title }}</title>
+  <link href='http://fonts.googleapis.com/css?family=Lato:100,400' rel='stylesheet' type='text/css'>
+  {{! <link href='http://fonts.googleapis.com/css?family=Russo+One' rel='stylesheet' type='text/css'> }}
+  <link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+
+  <header>
+    <h1>Tucker Bickler</h1>
+  </header>
+
+  <div class="main">
+
+    <div class="nav">
+      <div class="nav-inner">
+        <nav class="nav-window window">
+          <a ui-sref="home">Home</a>
+          <a ui-sref="connect">Connect</a>
+        </nav>
+      </div>
+    </div>
+
+    <div class="content">
+      <div class="content-inner">
+        <div class="content-window window" ui-view></div>
+      </div>
+    </div>
+    
+  </main>
+
+  <script src="js/app.min.js"></script>
+</body>
+</html>
