@@ -41,10 +41,7 @@ body, .nav a {
     z-index: -1;
   }
 }
-.nav-window {
-  padding: 20px 20px 15px 25px;
-}
-.content-window {
+.nav-window, .content-window {
   padding: 20px 20px 15px 25px;
 }
 
@@ -107,14 +104,32 @@ header {
   .nav {
     max-width: none;
     padding: 10px 5px 0 0;
-    // padding: 10px 20px 0 10px;
 
     a {
       display: inline-block;
       margin-right: 20px;
+      margin-top: 0;
+
+      &:last-child {
+        margin-right: 0;
+      }
     }
   }
   .content {
     padding: 15px 5px 0 0;
+  }
+}
+
+@media (max-width: 400px) {
+  header {
+    padding: 10px 5px;
+  }
+  .nav-window, .content-window {
+    padding: 15px 10px 10px 15px;
+  }
+  .nav {
+    a {
+      margin-right: 10px;
+    }
   }
 }

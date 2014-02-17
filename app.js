@@ -4,10 +4,11 @@
  */
 
 var express = require('express');
+var connect = require('connect');
 var routes = require('./routes');
 var http = require('http');
 var path = require('path');
-var db = require('./db');
+var db = require('./src/db');
 
 var app = express();
 
@@ -20,6 +21,7 @@ app.use(express.logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded());
 app.use(express.methodOverride());
+app.use(connect.compress());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(app.router);
 

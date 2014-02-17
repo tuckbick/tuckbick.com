@@ -6,6 +6,6 @@ var config = {
   port: 0000,
   path: ''
 }
-config.full = 'mongodb://'+user+':'+pass+'@'+domain+':'+port+'/'+path
+config.url = 'mongodb://'+user+':'+pass+'@'+domain+':'+port+'/'+path
 
 exports.mongo = config;

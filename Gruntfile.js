@@ -5,53 +5,43 @@ module.exports = function(grunt) {
     pkg: grunt.file.readJSON('package.json'),
 
     clean: {
-      js_before: ['public/js/*'],
-      js_after: [
-        'public/js/lib/angular.js',
-        'public/js/lib/angular-ui-router.js',
-        'public/js/main.js'
-      ]
+      js: ['public/js/*']
     },
 
-    uglify: {
-      options: {
-        banner: '/*! <%= grunt.template.today("yyyy-mm-dd") %> */\n'
-      },
-      lib: {
-        files: {
-          'public/js/lib/jquery.js':'private/bower/jquery/jquery.js',
-          'public/js/lib/angular.js':'private/bower/angular/angular.js',
-          'public/js/lib/angular-ui-router.js':'private/bower/angular-ui-router/release/angular-ui-router.js',
-        }
-      },
-      src: {
-        files: [{
-          expand: true,
-          cwd: 'private/js',
-          src: 'main.js',
-          dest: 'public/js'
-        }]
-      },
-      app: {
-        files: {
-          'public/js/app.min.js': 'public/js/app.js'
-        }
-      }
-    },
-
-    concat: {
-      app: {
+    requirejs: {
+      build: {
         options: {
-          stripBanners: false,
-          banner: '/*! <%= pkg.name %> - v<%= pkg.version %> - ' +
-            '<%= grunt.template.today("yyyy-mm-dd") %> */\n',
-        },
-        src: [
-          'public/js/lib/angular.js',
-          'public/js/lib/angular-ui-router.js',
-          'public/js/main.js'
-        ],
-        dest: 'public/js/app.js'
+          baseUrl: "private",
+          name: "bower/almond/almond",
+          out: "public/js/app.js",
+          // optimize: 'none',
+          deps: ['app'],
+          paths: {
+            "app":"js/app",
+            "jquery": "bower/jquery/jquery",
+            "angular": "bower/angular/angular",
+            "fastclick": "bower/fastclick/lib/fastclick",
+            "ui.router": "bower/angular-ui-router/release/angular-ui-router",
+            "MainCtrl": "js/controller/main",
+            "HomeCtrl": "js/controller/home",
+            "ProjectsCtrl": "js/controller/projects",
+            "ResumeCtrl": "js/controller/resume",
+            "ConnectCtrl": "js/controller/connect"
+          },
+          shim: {
+            "angular": {
+              exports: "angular",
+              deps: ["jquery"]
+            },
+            "ui.router": {
+              deps: ["angular"]
+            },
+            "app": {
+              deps: ['angular']
+            }
+          }
+
+        }
       }
     },
 
@@ -137,6 +127,7 @@ module.exports = function(grunt) {
 
   });
 
+  grunt.loadNpmTasks('grunt-contrib-requirejs');
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-clean');
@@ -148,7 +139,7 @@ module.exports = function(grunt) {
 
 
 
-  grunt.registerTask('js', ['clean:js_before','uglify:lib','uglify:src','concat','uglify:app','concat','clean:js_after']);
+  grunt.registerTask('js', ['clean:js','requirejs',]);
   grunt.registerTask('css', ['sass','autoprefixer','cssmin']);
   grunt.registerTask('partials', ['copy'])
 
