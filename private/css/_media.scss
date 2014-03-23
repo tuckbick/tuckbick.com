@@ -1,0 +1,12 @@
+
+
+@media (max-width: rem-calc(640)) {
+    
+}
+
+@media (max-width: rem-calc(320)) {
+    .nav-link {
+        flex: 1 50%;
+        line-height: rem-calc(44);
+    }
+}

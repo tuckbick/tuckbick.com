@@ -2,14 +2,18 @@ define([
   'angular',
 
   // controllers
-  'MainCtrl', 'HomeCtrl', 'ProjectsCtrl', 'ResumeCtrl', 'ConnectCtrl',
+  'MainCtrl', 'BlogCtrl', 'ProjectsCtrl', 'ResumeCtrl', 'ContactCtrl',
+
+  // services
+  'ContactSvc',
 
   // other
   'ui.router'
 
 ], function(
   angular,
-  MainCtrl, HomeCtrl, ProjectsCtrl, ResumeCtrl, ConnectCtrl,
+  MainCtrl, BlogCtrl, ProjectsCtrl, ResumeCtrl, ContactCtrl,
+  ContactSvc,
   uiRouter
 ) {
 
@@ -19,20 +23,22 @@ define([
   ])
 
   app.controller('MainCtrl', MainCtrl);
-  app.controller('HomeCtrl', HomeCtrl);
+  app.controller('BlogCtrl', BlogCtrl);
   app.controller('ProjectsCtrl', ProjectsCtrl);
   app.controller('ResumeCtrl', ResumeCtrl);
-  app.controller('ConnectCtrl', ConnectCtrl);
+  app.controller('ContactCtrl', ContactCtrl);
+
+  app.service('ContactSvc', ContactSvc);
 
   app.config(['$locationProvider', '$urlRouterProvider', '$stateProvider',
     function($locationProvider, $urlRouterProvider, $stateProvider) {
       $locationProvider.html5Mode(true);
       $urlRouterProvider.otherwise("/");
       $stateProvider
-        .state('home', {
+        .state('blog', {
           url: "/",
-          templateUrl: "partials/home.html",
-          controller: 'HomeCtrl'
+          templateUrl: "partials/blog.html",
+          controller: 'BlogCtrl'
         })
         .state('projects', {
           url: "/projects",
@@ -44,10 +50,10 @@ define([
           templateUrl: "partials/resume.html",
           controller: 'ResumeCtrl'
         })
-        .state('connect', {
-          url: "/connect",
-          templateUrl: "partials/connect.html",
-          controller: 'ConnectCtrl'
+        .state('contact', {
+          url: "/contact",
+          templateUrl: "partials/contact.html",
+          controller: 'ContactCtrl'
         })
     }
   ]);

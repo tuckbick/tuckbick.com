@@ -1,3 +1,40 @@
+var _ = require('underscore');
+
+var requirejs = {
+  options: {
+    baseUrl: "private",
+    name: "bower/almond/almond",
+    out: "public/js/app.js",
+    deps: ['app'],
+    paths: {
+      "app":"js/app",
+      "jquery": "bower/jquery/dist/jquery",
+      "angular": "bower/angular/angular",
+      "fastclick": "bower/fastclick/lib/fastclick",
+      "ui.router": "bower/angular-ui-router/release/angular-ui-router",
+      "MainCtrl": "js/controller/main",
+      "BlogCtrl": "js/controller/blog",
+      "ProjectsCtrl": "js/controller/projects",
+      "ResumeCtrl": "js/controller/resume",
+      "ContactCtrl": "js/controller/contact",
+      "ContactSvc": "js/service/contact"
+    },
+    shim: {
+      "angular": {
+        exports: "angular",
+        deps: ["jquery"]
+      },
+      "ui.router": {
+        deps: ["angular"]
+      },
+      "app": {
+        deps: ['angular']
+      }
+    }
+
+  }
+}
+
 module.exports = function(grunt) {
 
   // Project configuration.
@@ -9,39 +46,11 @@ module.exports = function(grunt) {
     },
 
     requirejs: {
-      build: {
-        options: {
-          baseUrl: "private",
-          name: "bower/almond/almond",
-          out: "public/js/app.js",
-          // optimize: 'none',
-          deps: ['app'],
-          paths: {
-            "app":"js/app",
-            "jquery": "bower/jquery/jquery",
-            "angular": "bower/angular/angular",
-            "fastclick": "bower/fastclick/lib/fastclick",
-            "ui.router": "bower/angular-ui-router/release/angular-ui-router",
-            "MainCtrl": "js/controller/main",
-            "HomeCtrl": "js/controller/home",
-            "ProjectsCtrl": "js/controller/projects",
-            "ResumeCtrl": "js/controller/resume",
-            "ConnectCtrl": "js/controller/connect"
-          },
-          shim: {
-            "angular": {
-              exports: "angular",
-              deps: ["jquery"]
-            },
-            "ui.router": {
-              deps: ["angular"]
-            },
-            "app": {
-              deps: ['angular']
-            }
-          }
-
-        }
+      build: requirejs,
+      debug: {
+        options: _.extend(requirejs.options, {
+          optimize: 'none'
+        })
       }
     },
 
@@ -86,6 +95,17 @@ module.exports = function(grunt) {
           dest: 'public/partials/',
           filter: 'isFile'
         }]
+      },
+      fonts: {
+        files: [{
+          expand: true,
+          flatten: true,
+          src: [
+            'private/font/**'
+          ],
+          dest: 'public/font/',
+          filter: 'isFile'
+        }]
       }
     },
 
@@ -94,7 +114,7 @@ module.exports = function(grunt) {
         files: [
           'private/**/*.js'
         ],
-        tasks: ['js'],
+        tasks: ['js:debug'],
         options: {
           spawn: false,
           interrupt: true,
@@ -114,9 +134,9 @@ module.exports = function(grunt) {
       },
       partials: {
         files: [
-          'private/**/*.scss'
+          'private/**/*.html'
         ],
-        tasks: ['css'],
+        tasks: ['partials'],
         options: {
           spawn: false,
           interrupt: true,
@@ -139,10 +159,12 @@ module.exports = function(grunt) {
 
 
 
-  grunt.registerTask('js', ['clean:js','requirejs',]);
-  grunt.registerTask('css', ['sass','autoprefixer','cssmin']);
-  grunt.registerTask('partials', ['copy'])
+  grunt.registerTask('js', ['clean:js','requirejs:build',]);
+  grunt.registerTask('js:debug', ['clean:js','requirejs:debug',]);
+  grunt.registerTask('css', ['sass','autoprefixer','cssmin','copy:fonts']);
+  grunt.registerTask('partials', ['copy:partials'])
 
   grunt.registerTask('default', ['js','css','partials']);
+  grunt.registerTask('debug', ['js:debug','css','partials']);
 
 };

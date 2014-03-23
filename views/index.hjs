@@ -11,21 +11,20 @@
 </head>
 <body>
 
-  <header>
-    <h1>Tucker Bickler</h1>
-  </header>
 
   <div class="main" ng-controller="MainCtrl">
 
-    <div class="nav">
-      <div class="nav-inner">
-        <nav class="nav-window window">
-          <a ui-sref="home">Blog</a>
-          <a ui-sref="projects">Projects</a>
-          <a ui-sref="resume">Resume</a>
-          <a ui-sref="connect">Connect</a>
-        </nav>
-      </div>
+    <div class="splash top">
+      <header>
+        <h1 class="header-title">Tucker Bickler / Web Developer / Austin, TX</h1>
+      </header>
+
+      <nav class="nav">
+        <a class="nav-link blog" ui-sref="blog">blog</a>
+        <a class="nav-link projects" ui-sref="projects">projects</a>
+        <a class="nav-link resume" ui-sref="resume">resume</a>
+        <a class="nav-link contact" ui-sref="contact">contact</a>
+      </nav>
     </div>
 
     <div class="content">

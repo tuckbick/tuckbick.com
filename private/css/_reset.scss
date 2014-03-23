@@ -1,0 +1,15 @@
+html, body {
+    @extend %reset;
+}
+
+a {
+    @extend %reset;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    @extend %reset;
+}
+
+ul, ol, li {
+    @extend %reset;
+}

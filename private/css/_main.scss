@@ -1,0 +1,76 @@
+
+$width1: rem-calc(800);
+
+
+html {
+    text-align: center;
+}
+
+html, body {
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+}
+
+body {
+    font-family: arial;
+    max-width: rem-calc(1280);
+    font-family: 'Lato', sans-serif;
+}
+
+
+.main {
+    @extend %wrapper;
+    flex-direction: column;
+}
+
+.splash {
+    position: relative;
+    max-width: $width1;
+    width: 100%;
+    margin-bottom: rem-calc(16);
+
+    .header-title {
+        line-height: 2;
+    }
+}
+.nav {
+    @extend %wrapper;
+    flex-direction: row;
+    flex-flow: row wrap;
+}
+    .nav-link {
+        flex: 1 auto;
+        height: 100%;
+        line-height: rem-calc(30);
+
+        &.home {
+            
+        }
+        &.projects {
+            
+        }
+        &.resume {
+            
+        }
+        &.connect {
+            
+        }
+    }
+.content {
+    max-width: $width1;
+    width: 100%;
+}
+
+
+#contact {
+    font-size: rem-calc(96);
+}
+    .contact-item {
+        display: inline-block;
+        padding: 0 rem-calc(16);
+    }
+        .contact-item-inner {
+            padding: 0 rem-calc(32);
+        }
+

@@ -6,9 +6,10 @@
 var express = require('express');
 var connect = require('connect');
 var routes = require('./routes');
+var data = require('./src/data');
 var http = require('http');
 var path = require('path');
-var db = require('./src/db');
+// var db = require('./src/db');
 
 var app = express();
 
@@ -31,6 +32,8 @@ if ('development' == app.get('env')) {
 }
 
 app.get('/', routes.index);
+
+app.get('/data/contact', data.contact);
 
 app.get('*', routes.index);
 

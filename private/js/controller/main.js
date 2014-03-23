@@ -1,17 +1,20 @@
 define([
-  'angular',
-  'jquery',
-  'fastclick'
+    'angular',
+    'jquery',
+    'fastclick'
 ], function(angular, $, FastClick) {
 
-  $(function() {
-      FastClick.attach(document.body);
-  });
+    $(function() {
+        FastClick.attach(document.body);
+    });
 
-  var Ctrl = function($scope) {
-    
-  }
+    var Ctrl = function($rootScope, $scope, $document) {
+        var $html = $($document[0].documentElement);
+        $rootScope.$on('$stateChangeSuccess', function(next, current) { 
+            current.name && $html.attr('data-color',current.name);
+        });
+    }
 
-  Ctrl.$inject = ['$scope']
-  return Ctrl
+    Ctrl.$inject = ['$rootScope', '$scope', '$document']
+    return Ctrl
 })

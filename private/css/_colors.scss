@@ -1,0 +1,68 @@
+// http://www.colourlovers.com/palette/3292467/Can_you_dream~
+$color1: #67647D;
+$color2: #5D9E9F;
+$color3: #97B7C5;
+$color4: #E5C4B6;
+$color5: #F14F5F;
+
+html {
+    background: $color1;
+
+    .nav-link {
+        color: #FFFFFF;
+
+        &.blog {
+            background: $color2;
+        }
+        &.projects {
+            background: $color3;
+        }
+        &.resume {
+            background: $color4;
+        }
+        &.contact {
+            background: $color5;
+        }
+    }
+
+    &[data-color=blog] {
+        background: $color2;
+
+        .nav-link.blog {
+            background: $color1;
+        }
+        #contact a {
+            color: $color1;
+        }
+    }
+    &[data-color=projects] {
+        background: $color3;
+
+        .nav-link.projects {
+            background: $color1;
+        }
+        #contact a {
+            color: $color1;
+        }
+    }
+    &[data-color=resume] {
+        background: $color4;
+
+        .nav-link.resume {
+            background: $color1;
+        }
+        #contact a {
+            color: $color1;
+        }
+    }
+    &[data-color=contact] {
+        background: $color5;
+
+        .nav-link.contact {
+            background: $color1;
+        }
+        #contact a {
+            color: $color1;
+        }
+    }
+}
