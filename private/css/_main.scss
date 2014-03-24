@@ -31,10 +31,15 @@ body {
     margin-bottom: rem-calc(16);
 }
     .header-title {
-        line-height: 2;
+        line-height: 1;
+        margin-bottom: rem-calc(32);
         font-size: rem-calc(58);
 
         .del {
+            padding: rem-calc(4) rem-calc(16);
+            font-size: rem-calc(99);
+            top: rem-calc(12);
+            position: relative;
             padding: 0 rem-calc(16);
         }
     }

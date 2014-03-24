@@ -6,7 +6,7 @@
   <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0, maximum-scale=1.0">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <link href='http://fonts.googleapis.com/css?family=Lato:100,400,900' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Lato:100,300,400,700' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" href="css/app.css">
 </head>
 <body>
@@ -16,7 +16,7 @@
 
     <div class="splash top">
       <header>
-        <h1 class="header-title">Tucker Bickler <span class="del">&#9992;</span> Austin, TX</h1>
+        <h1 class="header-title">Tucker Bickler <span class="del">&#9774;</span> Austin, TX</h1>
       </header>
 
       <nav class="nav">

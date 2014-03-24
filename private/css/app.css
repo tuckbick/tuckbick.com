@@ -82,9 +82,14 @@ body {
   margin-bottom: 1rem; }
 
 .header-title {
-  line-height: 2;
+  line-height: 1;
+  margin-bottom: 2rem;
   font-size: 3.625rem; }
   .header-title .del {
+    padding: 0.25rem 1rem;
+    font-size: 6.1875rem;
+    top: 0.75rem;
+    position: relative;
     padding: 0 1rem; }
 
 .nav {
