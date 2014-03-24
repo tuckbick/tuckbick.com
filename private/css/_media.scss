@@ -1,7 +1,11 @@
 
-
 @media (max-width: rem-calc(640)) {
-    
+    #contact {
+        font-size: rem-calc(72)
+    }
+        .contact-item {
+            flex: 1 (100% / 3);
+        }
 }
 
 @media (max-width: rem-calc(320)) {
@@ -9,4 +13,10 @@
         flex: 1 50%;
         line-height: rem-calc(44);
     }
+    #contact {
+        
+    }
+        .contact-item {
+            flex: 1 (100% / 2);
+        }
 }

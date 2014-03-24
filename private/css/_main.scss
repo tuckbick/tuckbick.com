@@ -29,18 +29,22 @@ body {
     max-width: $width1;
     width: 100%;
     margin-bottom: rem-calc(16);
-
+}
     .header-title {
         line-height: 2;
+        font-size: rem-calc(58);
+
+        .del {
+            padding: 0 rem-calc(16);
+        }
     }
-}
 .nav {
     @extend %wrapper;
     flex-direction: row;
     flex-flow: row wrap;
 }
     .nav-link {
-        flex: 1 auto;
+        flex: 1 0%;
         height: 100%;
         line-height: rem-calc(30);
 
@@ -65,12 +69,12 @@ body {
 
 #contact {
     font-size: rem-calc(96);
+    @extend %wrapper;
+    flex-direction: row;
+    flex-flow: row wrap;
 }
     .contact-item {
         display: inline-block;
-        padding: 0 rem-calc(16);
+        flex: 1 (100% / 4);
     }
-        .contact-item-inner {
-            padding: 0 rem-calc(32);
-        }
 

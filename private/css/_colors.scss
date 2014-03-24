@@ -4,65 +4,84 @@ $color2: #5D9E9F;
 $color3: #97B7C5;
 $color4: #E5C4B6;
 $color5: #F14F5F;
+$color6: #E9E9EC;
+
 
 html {
-    background: $color1;
+    // background: $color1;
+    background: #DCD5A9;
+
+    body {
+        color: #403F4E;
+    }
+
+    .header-title {
+        // color: #F14F5F;
+        // color: $color6;
+        color: #FF3659;
+        // color: #67647D;
+        // color: rgba(#67647D, 0.7);
+        // $l: (1/58);
+        // text-shadow:  #{$l}em  #{$l}em 0px #67647d,
+                     // #{-$l}em #{-$l}em 0px #e5c4b6;
+    }
+
+    .nav {
+        background: linear-gradient(to right,  #ff368b 0%,#ff7836 100%);
+    }
 
     .nav-link {
         color: #FFFFFF;
 
         &.blog {
-            background: $color2;
+            // background: $color2;
+            // background: #FF4776;
         }
         &.projects {
-            background: $color3;
+            // background: $color3;
+            // background: #FF4F6B;
         }
         &.resume {
-            background: $color4;
+            // background: $color4;
+            // background: #FF5761;
         }
         &.contact {
-            background: $color5;
+            // background: $color5;
+            // background: #FF5F56;
         }
     }
 
-    &[data-color=blog] {
-        background: $color2;
+    // &[data-color=blog] {
+    //     background: $color2;
 
-        .nav-link.blog {
-            background: $color1;
-        }
-        #contact a {
-            color: $color1;
-        }
-    }
-    &[data-color=projects] {
-        background: $color3;
+    //     .nav-link.blog {
+    //         background: $color1;
+    //     }
+    // }
+    // &[data-color=projects] {
+    //     background: $color3;
 
-        .nav-link.projects {
-            background: $color1;
-        }
-        #contact a {
-            color: $color1;
-        }
-    }
-    &[data-color=resume] {
-        background: $color4;
+    //     .nav-link.projects {
+    //         background: $color1;
+    //     }
+    // }
+    // &[data-color=resume] {
+    //     background: $color4;
 
-        .nav-link.resume {
-            background: $color1;
-        }
-        #contact a {
-            color: $color1;
-        }
-    }
-    &[data-color=contact] {
-        background: $color5;
+    //     .nav-link.resume {
+    //         background: $color1;
+    //     }
+    // }
+    // &[data-color=contact] {
+    //     background: $color5;
 
-        .nav-link.contact {
-            background: $color1;
-        }
-        #contact a {
-            color: $color1;
-        }
-    }
+    //     .nav-link.contact {
+    //         background: $color1;
+    //     }
+    // }
+}
+
+#contact a {
+    // color: $color6;
+    color: #403F4E;
 }
