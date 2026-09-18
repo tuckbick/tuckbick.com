@@ -1,0 +1,13 @@
+.section {
+    margin-top: 2.5rem;
+}
+
+.section-title {
+    display: inline-block;
+    border-bottom: 1px dotted var(--white);
+    padding-right: 2rem;
+}
+
+.section-inner {
+    margin-top: 2rem;
+}

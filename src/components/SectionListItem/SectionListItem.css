@@ -1,0 +1,7 @@
+.section-listitem {
+    margin-top: 1.5rem;
+}
+
+.section-listitem-inner {
+    display: inline-block;
+}
