@@ -21,7 +21,7 @@ export default function Work() {
                     return (
                         <SectionListItem key={idx} tabindex={0}>
                             <div className="work-trigger-content">
-                                <h3 className="role"><strong>{company}</strong> <span className="del"> — </span><em>{role}</em></h3>
+                                <h3 className="role">{company} <span className="del"> — </span><em>{role}</em></h3>
                                 <div className="duration">{start} - {end}<span className="del"> | </span>{location.join(' → ')}</div>
                             </div>
                             <div className="work-trigger-arrow">
