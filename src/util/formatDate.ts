@@ -1,4 +1,4 @@
 export default (date: string) => {
     const d = new Date(date)
-    return d.toLocaleDateString('en-US', { month: 'short', year: 'numeric' }).replace(',', '')
+    return d.toLocaleDateString('en-US', { month: 'short', year: 'numeric', timeZone: 'UTC' }).replace(',', '')
 }
