@@ -15,8 +15,8 @@ export default function Contact() {
                     return (
                         <SectionListItem key={platform}>
                             <Link
-                                target={platform === 'email' ? null : undefined}
-                                rel={platform === 'email' ? null : undefined}
+                                target={platform === 'email' ? "_self" : undefined}
+                                rel={platform === 'email' ? "" : undefined}
                                 href={href}
                             >
                                 <Icon name={platform as any} /> {text}

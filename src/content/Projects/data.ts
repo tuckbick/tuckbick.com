@@ -1,9 +1,11 @@
+import type { Duration } from "../../util/formatDuration"
+
 export default [
     {
         name: "Studio Marlo",
         duration: {
             start: "2021-11-01"
-        },
+        } as Duration,
         links: [
             { href: "https://www.instagram.com/studio0_0marlo/", label: "Instagram", platform: "instagram" },
             { href: "https://github.com/tuckbick/drawbot", label: "GitHub", platform: "github" }
@@ -19,7 +21,7 @@ export default [
         duration: {
             start: "2014-06-01",
             end: "2022-04-01"
-        },
+        } as Duration,
         links: [
             { href: "https://picardylearning.com/", label: "Website", platform: "www" },
             { href: "https://github.com/picardy", label: "GitHub", platform: "github" }

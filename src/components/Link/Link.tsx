@@ -8,8 +8,8 @@ export default function Link({
     children,
 }: {
     href: string,
-    target?: string | null,
-    rel?: string | null,
+    target?: string,
+    rel?: string,
     inline?: boolean,
     children: React.ReactNode,
 }) {
@@ -17,8 +17,8 @@ export default function Link({
         <a
             className={`link ${inline && 'link-inline'}`}
             href={href}
-            target={typeof target !== "undefined" ? target : "_blank"}
-            rel={typeof rel !== "undefined" ? rel : "noreferrer"}
+            target={target ?? "_blank"}
+            rel={rel ?? "noreferrer"}
         >
             {children}
         </a>
