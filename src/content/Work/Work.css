@@ -1,21 +1,14 @@
 #work {
 
-    .role {
-        .del {
-            padding-right: 0.25rem;
-            padding-left: 0.25rem;
-        }
-    }
-
-    .duration {
-        font-size: 0.9rem;
-        text-transform: uppercase;
-        margin-top: 0.25rem;
-
+    .subtitle {
         .del {
             padding-right: 0.5rem;
             padding-left: 0.5rem;
         }
+    }
+
+    .section-listitem {
+        margin-top: 1.5rem;
     }
 
     .section-listitem-inner {

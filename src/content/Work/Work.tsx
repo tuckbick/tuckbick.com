@@ -1,28 +1,26 @@
-import './Work.css';
 import Section from '../../components/Section/Section';
 import SectionList from '../../components/SectionList/SectionList';
-import data from './data';
 import SectionListItem from '../../components/SectionListItem/SectionListItem';
 
-export default function Work() {
+import formatDuration from '../../util/formatDuration';
 
-    const formatDate = (date: string) => {
-        const d = new Date(date)
-        return d.toLocaleDateString('en-US', { month: 'short', year: 'numeric' }).replace(',', '')
-    }
+import data from './data';
+
+import './Work.css';
+
+export default function Work() {
 
     return (
         <Section id="work" title="Work Experience">
             <SectionList>
                 {data.map(({ company, role, duration, location }, idx) => {
-                    const start = formatDate(duration.start)
-                    const end = duration.end ? formatDate(duration.end) : 'Present'
+                    const displayDuration = formatDuration(duration);
 
                     return (
                         <SectionListItem key={idx} tabindex={0}>
                             <div className="work-trigger-content">
                                 <h3 className="role">{company} <span className="del"> — </span><em>{role}</em></h3>
-                                <div className="duration">{start} - {end}<span className="del"> | </span>{location.join(' → ')}</div>
+                                <div className="subtitle">{displayDuration}<span className="del"> | </span>{location.join(' → ')}</div>
                             </div>
                             <div className="work-trigger-arrow">
                                 〉

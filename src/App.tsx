@@ -25,9 +25,8 @@ function App() {
         <h1>Tucker Bickler</h1>
         <nav aria-label="main navigation">
           <ul>
-            <li><a href="#home">home</a></li>
-            <li><a href="#work">projects</a></li>
-            <li><a href="#about">work</a></li>
+            <li><a href="#projects">projects</a></li>
+            <li><a href="#work">work</a></li>
             <li><a href="#contact">contact</a></li>
           </ul>
         </nav>

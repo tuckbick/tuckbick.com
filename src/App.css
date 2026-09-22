@@ -80,3 +80,14 @@ header {
     }
   }
 }
+
+.subtitle {
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  margin-top: 0.25rem;
+}
+
+.del {
+  padding-right: 0.25rem;
+  padding-left: 0.25rem;
+}
