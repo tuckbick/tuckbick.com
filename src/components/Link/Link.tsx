@@ -15,7 +15,7 @@ export default function Link({
 }) {
     return (
         <a
-            className={`link ${inline && 'link-inline'}`}
+            className={`link ${inline && 'link--inline'}`}
             href={href}
             target={target ?? "_blank"}
             rel={rel ?? "noreferrer"}

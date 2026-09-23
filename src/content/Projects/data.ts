@@ -23,7 +23,7 @@ export default [
             end: "2022-04-01"
         } as Duration,
         links: [
-            { href: "https://picardylearning.com/", label: "Website", platform: "www" },
+            { href: "https://picardylearning.com/", label: "Homepage", platform: "www" },
             { href: "https://github.com/picardy", label: "GitHub", platform: "github" }
         ],
         description: ["Picardy is an online interactive platform for developing theory and musicianship skills for teachers and students. What started as a small project between friends, grew into a much larger and more comprehensive initiative, and is now something I'm proud to say is used in classrooms and homes across the world."]

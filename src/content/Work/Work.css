@@ -1,17 +1,15 @@
 #work {
 
-    .subtitle {
-        .del {
-            padding-right: 0.5rem;
-            padding-left: 0.5rem;
-        }
+    .subtitle .del {
+        padding-right: 0.5rem;
+        padding-left: 0.5rem;
     }
 
     .section-listitem {
         margin-top: 1.5rem;
     }
 
-    .section-listitem-inner {
+    /* .section-listitem-inner {
         display: inline-flex;
         justify-content: space-between;
         align-content: center;
@@ -79,5 +77,5 @@
             background: rgba(0, 0, 0, 0.25);
             transform: scale(0.97);
         }
-    }
+    } */
 }

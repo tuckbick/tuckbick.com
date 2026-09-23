@@ -22,9 +22,9 @@ export default function Work() {
                                 <h3 className="role">{company} <span className="del"> — </span><em>{role}</em></h3>
                                 <div className="subtitle">{displayDuration}<span className="del"> | </span>{location.join(' → ')}</div>
                             </div>
-                            <div className="work-trigger-arrow">
+                            {/* <div className="work-trigger-arrow">
                                 〉
-                            </div>
+                            </div> */}
                         </SectionListItem>
                     )
                 })}
