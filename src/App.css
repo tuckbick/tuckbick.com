@@ -91,3 +91,25 @@ header {
   padding-right: 0.25rem;
   padding-left: 0.25rem;
 }
+
+.focusable {
+  outline: 1px dotted transparent;
+  background: transparent;
+  transform: scale(1);
+  transition-property: outline-color, background-color;
+  transition-timing-function: ease-out;
+
+  &:hover,
+  &:focus {
+    outline-color: var(--white);
+    background: rgba(0, 0, 0, 0.15);
+    transition-duration: 0.15s;
+  }
+
+  &:active {
+    outline-style: solid;
+    background: rgba(0, 0, 0, 0.25);
+    transform: scale(0.97);
+    transition-duration: 0s;
+  }
+}

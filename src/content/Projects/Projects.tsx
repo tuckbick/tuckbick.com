@@ -9,12 +9,13 @@ import formatDuration from "../../util/formatDuration";
 import data from './data';
 
 import './Projects.css';
+import Gallery from "../../components/Gallery/Gallery";
 
 export default function Projects() {
     return (
         <Section id="projects" title="Projects">
             <SectionList>
-                {data.map(({ name, role, duration, links, description }, index) => {
+                {data.map(({ name, role, duration, links, description, images }, index) => {
                     const displayDuration = formatDuration(duration);
                     const displayRole = role ? <><span className="del"> — </span><em>{role}</em></> : null;
 
@@ -22,9 +23,8 @@ export default function Projects() {
                         <SectionListItem key={index}>
                             <h3 className="role">{name}{displayRole}</h3>
                             <div className="subtitle">{displayDuration}</div>
-                            {description && description.map((paragraph, idx) => (
-                                <p key={idx} className="project-description">{paragraph}</p>
-                            ))}
+                            {description && description.map((paragraph, idx) => <p key={idx}>{paragraph}</p>)}
+                            {images && images.length > 0 && <Gallery images={images} />}
                             {links && links.length > 0 && (
                                 <div className="project-links">
                                     {links.map(({ href, label, platform }, idx) => (

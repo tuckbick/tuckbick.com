@@ -1,14 +1,10 @@
 import React from 'react';
 import './SectionListItem.css';
 
-type SectionListItemProps = React.PropsWithChildren<{
-    tabindex?: number;
-}>;
-
-export default function SectionListItem({ children, tabindex = 0 }: SectionListItemProps) {
+export default function SectionListItem({ children }: React.PropsWithChildren) {
     return (
         <li className="section-listitem">
-            <div className="section-listitem-inner" tabIndex={tabindex}>
+            <div className="section-listitem-inner">
                 {children}
             </div>
         </li>

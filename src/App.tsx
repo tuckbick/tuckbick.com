@@ -1,8 +1,10 @@
 import { useEffect, useState } from 'react'
-import './App.css'
+
 import Projects from './content/Projects/Projects';
 import Work from './content/Work/Work';
 import Contact from './content/Contact/Contact';
+
+import './App.css'
 
 function App() {
 
@@ -33,11 +35,8 @@ function App() {
       </header>
 
       <Projects />
-
       <Work />
-
       <Contact />
-
     </>
   )
 }

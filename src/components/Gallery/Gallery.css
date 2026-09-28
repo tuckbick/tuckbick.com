@@ -1,0 +1,14 @@
+.gallery {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 0.75rem;
+    padding: 0.25rem 0;
+
+    .gallery-thumbnail {
+        object-fit: cover;
+        max-width: 128px;
+        height: auto;
+        border-radius: var(--border-radius);
+    }
+}

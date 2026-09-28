@@ -9,7 +9,7 @@
         margin-top: 1.5rem;
     }
 
-    /* .section-listitem-inner {
+    .section-listitem-inner>button {
         display: inline-flex;
         justify-content: space-between;
         align-content: center;
@@ -22,12 +22,6 @@
         margin-top: -0.75rem;
         margin-left: -0.75rem;
 
-        outline: 1px dotted transparent;
-        background: transparent;
-        transform: scale(1);
-
-        transition-property: outline-color, background-color;
-        transition-timing-function: ease-out;
 
         cursor: pointer;
 
@@ -47,16 +41,12 @@
 
         &:hover,
         &:active {
-            transition-duration: 0.15s;
-
             .work-trigger-arrow {
                 transition-duration: 0.15s;
             }
         }
 
         &:focus {
-            transition-duration: 0s;
-
             .work-trigger-arrow {
                 transition-duration: 0s;
             }
@@ -64,18 +54,9 @@
 
         &:hover,
         &:focus {
-            outline-color: var(--white);
-            background: rgba(0, 0, 0, 0.15);
-
             .work-trigger-arrow {
                 opacity: 1;
             }
         }
-
-        &:active {
-            outline-style: solid;
-            background: rgba(0, 0, 0, 0.25);
-            transform: scale(0.97);
-        }
-    } */
+    }
 }

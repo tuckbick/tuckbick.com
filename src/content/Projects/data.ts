@@ -11,8 +11,15 @@ export default [
             { href: "https://github.com/tuckbick/drawbot", label: "GitHub", platform: "github" }
         ],
         description: [
-            "I've only recently started contributing to the Instagram account, but this is something I've been having fun with on-and-off for the past several years. At the end of 2021 I grew an interest in pen plotting, but immediately felt constrained by the size of the smaller and more inexpensive machines. I decided I would try to design and assemble my own large format plotter, which ended up being a multi-year process of prototyping while also mixing in some time to actually use the machine and create some interesting artwork.",
-            "During an employment sabatical in 2026, I took some time to redesign the circuit board and electronics, while also upgrading to the firmware to support some more advanced capabilities. During this period I also participated in a local art fair to showcase my work — it was a big success!"
+            "This is something I've been having fun with on-and-off for the past several years. At the end of 2021 I grew an interest in pen plotting, but immediately felt constrained by the size of the smaller and more inexpensive machines. I decided to try designing and building my own large-format plotter. This ended up being a multi-year process of prototyping while also mixing in some time to actually use the machine and create some interesting artwork.",
+            "During an employment sabatical in 2026, I redesigned the circuit board and electronics, while also upgrading the firmware to support some more advanced capabilities. I also took this opportunity to participate in a local art fair to showcase my work — it was a big success!"
+        ],
+        images: [
+            "projects/project0.jpg",
+            "projects/project1.jpg",
+            "projects/project2.jpg",
+            "projects/project3.jpg",
+            "projects/project4.jpg"
         ]
     },
     {
