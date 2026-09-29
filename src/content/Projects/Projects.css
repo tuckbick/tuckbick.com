@@ -1,3 +1,11 @@
+#projects .section-listitem {
+    margin-top: 3rem;
+
+    &:first-child {
+        margin-top: 2rem;
+    }
+}
+
 .project-links {
     display: flex;
     gap: 1rem;
