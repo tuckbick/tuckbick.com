@@ -15,11 +15,11 @@ export default [
             "During an employment sabatical in 2026, I redesigned the circuit board and electronics, while also upgrading the firmware to support some more advanced capabilities. I also took this opportunity to participate in a local art fair to showcase my work — it was a big success!"
         ],
         images: [
-            "projects/project0.jpg",
-            "projects/project1.jpg",
-            "projects/project2.jpg",
-            "projects/project3.jpg",
-            "projects/project4.jpg"
+            "projects/marlo/project0.jpg",
+            "projects/marlo/project1.jpg",
+            "projects/marlo/project2.jpg",
+            "projects/marlo/project3.jpg",
+            "projects/marlo/project4.jpg"
         ]
     },
     {
@@ -33,6 +33,11 @@ export default [
             { href: "https://picardylearning.com/", label: "Homepage", platform: "www" },
             { href: "https://github.com/picardy", label: "GitHub", platform: "github" }
         ],
-        description: ["Picardy is an online interactive platform for developing theory and musicianship skills for teachers and students. What started as a small project between friends, grew into a much larger and more comprehensive initiative, and is now something I'm proud to say is used in classrooms and homes across the world."]
+        description: ["Picardy is an online interactive platform for developing theory and musicianship skills for teachers and students. What started as a small project between friends, grew into a much larger and more comprehensive initiative, and is now something I'm proud to say is used in classrooms and homes across the world."],
+        images: [
+            "projects/picardy/project0.jpg",
+            "projects/picardy/project1.jpg",
+            "projects/picardy/project2.jpg"
+        ]
     }
 ]

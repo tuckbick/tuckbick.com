@@ -1,5 +1,9 @@
 .section-listitem {
-    margin-top: 2rem;
+    margin-top: 3rem;
+
+    &:first-child {
+        margin-top: 2rem;
+    }
 }
 
 .section-listitem-inner {

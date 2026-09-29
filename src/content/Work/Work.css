@@ -30,13 +30,19 @@
         }
 
         .work-trigger-arrow {
-            display: flex;
+            display: none;
             padding: 0.5rem 0 0.5rem;
             align-items: center;
 
             opacity: 0;
             transition-property: opacity;
             transition-timing-function: ease-out;
+        }
+
+        &:hover,
+        &:active,
+        &:focus {
+            display: flex;
         }
 
         &:hover,

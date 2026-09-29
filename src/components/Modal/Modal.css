@@ -1,9 +1,10 @@
 .modal {
     --close-btn-size: 32px;
     --content-padding: 6px;
+    --modal-padding: calc(var(--close-btn-size) + var(--content-padding));
 
     margin: auto;
-    padding: calc(var(--close-btn-size) + var(--content-padding));
+    padding: var(--modal-padding);
     border: none;
     max-width: 640px;
     background: rgba(0, 0, 0, 0.8);
@@ -24,5 +25,9 @@
         width: var(--close-btn-size);
         padding: calc(var(--content-padding) / 2);
         background: rgba(0, 0, 0, 0.8);
+    }
+
+    img {
+        max-width: 100%;
     }
 }
