@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect } from "react";
+import { useRef, useState, useEffect } from "react";
 
 import Modal from "../Modal/Modal";
 
@@ -25,23 +25,39 @@ export default function Gallery({ images }: Props) {
 
     return (
         <div className="gallery">
-            {images.map((imgSrc, idx) => {
-                const thumbnailRef = useRef(null);
-                return (
-                    <React.Fragment key={idx}>
-                        <img
-                            className="gallery-thumbnail focusable"
-                            ref={thumbnailRef}
-                            src={`/${imgSrc}`}
-                            tabIndex={0}
-                            onClick={() => setCurrentIndex(idx)}
-                        />
-                        <Modal triggerRef={thumbnailRef}>
-                            <img src={`/${images[currentIndex]}`} />
-                        </Modal>
-                    </React.Fragment>
-                )
-            })}
+            {images.map((imgSrc, idx) => (
+                <GalleryItem
+                    key={idx}
+                    thumbnailSrc={imgSrc}
+                    currentSrc={images[currentIndex]}
+                    onSelect={() => setCurrentIndex(idx)}
+                />
+            ))}
         </div>
+    )
+}
+
+interface GalleryItemProps {
+    thumbnailSrc: string
+    currentSrc: string
+    onSelect: () => void
+}
+
+function GalleryItem({ thumbnailSrc, currentSrc, onSelect }: GalleryItemProps) {
+    const thumbnailRef = useRef<HTMLImageElement>(null);
+
+    return (
+        <>
+            <img
+                className="gallery-thumbnail focusable"
+                ref={thumbnailRef}
+                src={`/${thumbnailSrc}`}
+                tabIndex={0}
+                onClick={onSelect}
+            />
+            <Modal triggerRef={thumbnailRef}>
+                <img src={`/${currentSrc}`} />
+            </Modal>
+        </>
     )
 }

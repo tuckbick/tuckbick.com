@@ -6,7 +6,7 @@ import Icon from '../Icon/Icon';
 
 interface Props {
     children: React.ReactNode,
-    triggerRef: React.RefObject<HTMLButtonElement | null>
+    triggerRef: React.RefObject<HTMLElement | null>
 }
 
 export default function Modal({ children, triggerRef }: Props) {
@@ -22,7 +22,7 @@ export default function Modal({ children, triggerRef }: Props) {
         trigger.addEventListener('click', openDialog);
 
         return () => trigger.removeEventListener('click', openDialog);
-    }, []);
+    }, [triggerRef]);
 
     useEffect(() => {
         if (isDialogOpen) {
