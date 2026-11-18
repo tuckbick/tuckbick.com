@@ -28,7 +28,7 @@ npm run deploy
 
 ```
 index.html            HTML template, metadata, and JSON-LD structured data
-prerender.js          renders the app to HTML and injects it into dist/client/index.html
+prerender.js          renders the app to HTML and injects it into dist/index.html
 src/
   main.tsx            client entry (hydrates prerendered markup)
   entry-server.tsx    server render entry used by prerender.js
@@ -36,9 +36,8 @@ src/
   content/            page sections: Header, Projects, Work, Contact
   components/         shared UI components (Section, Gallery, Modal, Icon, ...)
   util/               date and duration formatting
-public/               static assets (project images)
-worker/index.ts       Cloudflare Worker (serves /privacy; returns 404 for anything else that isn't a static asset)
-wrangler.jsonc        Worker and assets configuration
+public/               static assets (project images, privacy.html served at /privacy)
+wrangler.jsonc        static assets configuration (unknown paths get a 404 from Cloudflare)
 ```
 
 ## Editing content

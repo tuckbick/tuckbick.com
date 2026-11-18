@@ -12,7 +12,7 @@ async function prerender() {
     appType: 'custom'
   })
 
-  const template = fs.readFileSync(toAbsolute('dist/client/index.html'), 'utf-8')
+  const template = fs.readFileSync(toAbsolute('dist/index.html'), 'utf-8')
   
   const { render } = await vite.ssrLoadModule('/src/entry-server.tsx')
   
@@ -20,7 +20,7 @@ async function prerender() {
   
   const html = template.replace('<!--app-html-->', appHtml)
   
-  fs.writeFileSync(toAbsolute('dist/client/index.html'), html)
+  fs.writeFileSync(toAbsolute('dist/index.html'), html)
   
   await vite.close()
   console.log('Prerender complete.')
