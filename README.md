@@ -37,7 +37,7 @@ src/
   components/         shared UI components (Section, Gallery, Modal, Icon, ...)
   util/               date and duration formatting
 public/               static assets (project images)
-worker/index.ts       Cloudflare Worker (serves /privacy)
+worker/index.ts       Cloudflare Worker (serves /privacy; returns 404 for anything else that isn't a static asset)
 wrangler.jsonc        Worker and assets configuration
 ```
 
