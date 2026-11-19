@@ -21,6 +21,12 @@ async function prerender() {
   const html = template.replace('<!--app-html-->', appHtml)
   
   fs.writeFileSync(toAbsolute('dist/index.html'), html)
+
+  // Machine-readable versions of the same content (agents / search engines)
+  const { generateMarkdown, generateLlmsTxt, generateSitemap } = await vite.ssrLoadModule('/src/util/generateMarkdown.ts')
+  fs.writeFileSync(toAbsolute('dist/index.md'), generateMarkdown())
+  fs.writeFileSync(toAbsolute('dist/llms.txt'), generateLlmsTxt())
+  fs.writeFileSync(toAbsolute('dist/sitemap.xml'), generateSitemap())
   
   await vite.close()
   console.log('Prerender complete.')
