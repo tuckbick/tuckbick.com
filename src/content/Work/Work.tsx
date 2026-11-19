@@ -28,14 +28,16 @@ function WorkItem({ job: { company, role, duration, location, description } }: {
 
     return (
         <SectionListItem>
-            <button ref={triggerRef} className="focusable">
-                <div className="work-trigger-content">
-                    <h3 className="role">{company} <span className="del"> — </span><em>{role}</em></h3>
-                    <div className="subtitle">{displayDuration}<span className="del"> | </span>{location.join(' → ')}</div>
-                </div>
-                <div className="work-trigger-arrow">〉</div>
-            </button>
-            <Modal triggerRef={triggerRef}>{description.map((paragraph, idx) => <p key={idx}>{paragraph}</p>)}</Modal>
+            <h3 className="work-heading">
+                <button ref={triggerRef} className="focusable" type="button" aria-haspopup="dialog">
+                    <span className="work-trigger-content">
+                        <span className="role">{company} <span className="del"> — </span><em>{role}</em></span>
+                        <span className="subtitle">{displayDuration}<span className="del"> | </span>{location.join(' → ')}</span>
+                    </span>
+                    <span className="work-trigger-arrow" aria-hidden="true">〉</span>
+                </button>
+            </h3>
+            <Modal triggerRef={triggerRef} renderClosed>{description.map((paragraph, idx) => <p key={idx}>{paragraph}</p>)}</Modal>
         </SectionListItem>
     )
 }

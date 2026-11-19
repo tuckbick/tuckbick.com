@@ -7,9 +7,11 @@ import Icon from '../Icon/Icon';
 interface Props {
     children: React.ReactNode,
     triggerRef: React.RefObject<HTMLElement | null>
+    /** Keep the (closed) dialog in the DOM so its content is present in prerendered HTML. */
+    renderClosed?: boolean
 }
 
-export default function Modal({ children, triggerRef }: Props) {
+export default function Modal({ children, triggerRef, renderClosed = false }: Props) {
     const [isDialogOpen, setDialogOpen] = useState(false);
     const dialogRef = useRef<HTMLDialogElement>(null);
 
@@ -46,7 +48,7 @@ export default function Modal({ children, triggerRef }: Props) {
 
 
     return (
-        isDialogOpen && <dialog ref={dialogRef} className="modal" aria-modal="true" role="dialog" onClick={onDialogClick} onKeyDown={onDialogKeyDown}>
+        (isDialogOpen || renderClosed) && <dialog ref={dialogRef} className="modal" aria-modal="true" role="dialog" onClick={onDialogClick} onKeyDown={onDialogKeyDown} onClose={closeDialog}>
             <button className="focusable" type="button" onClick={closeDialog} aria-label="Close dialog" tabIndex={0}>
                 <Icon name="x" size="lg" />
             </button>

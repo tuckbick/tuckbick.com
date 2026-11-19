@@ -9,7 +9,28 @@
         margin-top: 1.5rem;
     }
 
-    .section-listitem-inner>button {
+    .work-heading {
+        margin: 0;
+        font: inherit;
+    }
+
+    .work-trigger-content {
+        display: block;
+
+        .role {
+            display: block;
+            font-family: 'Zain', serif;
+            font-size: 1.17em;
+            font-weight: bold;
+            line-height: 1.25;
+        }
+
+        .subtitle {
+            display: block;
+        }
+    }
+
+    .work-heading>button {
         display: inline-flex;
         justify-content: space-between;
         align-content: center;
