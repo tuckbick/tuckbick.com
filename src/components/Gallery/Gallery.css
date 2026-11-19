@@ -6,10 +6,16 @@
     padding: 0.25rem 0;
 
     .gallery-thumbnail {
-        object-fit: cover;
-        max-width: 128px;
-        height: auto;
+        display: block;
         border-radius: var(--border-radius);
         cursor: pointer;
+
+        img {
+            display: block;
+            object-fit: cover;
+            max-width: 128px;
+            height: auto;
+            border-radius: var(--border-radius);
+        }
     }
 }

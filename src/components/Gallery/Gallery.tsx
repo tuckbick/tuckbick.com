@@ -4,8 +4,15 @@ import Modal from "../Modal/Modal";
 
 import './Gallery.css';
 
+export interface GalleryImage {
+    src: string
+    alt: string
+    width: number
+    height: number
+}
+
 interface Props {
-    images: string[]
+    images: GalleryImage[]
 }
 
 export default function Gallery({ images }: Props) {
@@ -25,11 +32,11 @@ export default function Gallery({ images }: Props) {
 
     return (
         <div className="gallery">
-            {images.map((imgSrc, idx) => (
+            {images.map((image, idx) => (
                 <GalleryItem
                     key={idx}
-                    thumbnailSrc={imgSrc}
-                    currentSrc={images[currentIndex]}
+                    thumbnail={image}
+                    current={images[currentIndex]}
                     onSelect={() => setCurrentIndex(idx)}
                 />
             ))}
@@ -38,25 +45,33 @@ export default function Gallery({ images }: Props) {
 }
 
 interface GalleryItemProps {
-    thumbnailSrc: string
-    currentSrc: string
+    thumbnail: GalleryImage
+    current: GalleryImage
     onSelect: () => void
 }
 
-function GalleryItem({ thumbnailSrc, currentSrc, onSelect }: GalleryItemProps) {
-    const thumbnailRef = useRef<HTMLImageElement>(null);
+function GalleryItem({ thumbnail, current, onSelect }: GalleryItemProps) {
+    const triggerRef = useRef<HTMLButtonElement>(null);
 
     return (
         <>
-            <img
+            <button
+                type="button"
                 className="gallery-thumbnail focusable"
-                ref={thumbnailRef}
-                src={`/${thumbnailSrc}`}
-                tabIndex={0}
+                ref={triggerRef}
+                aria-haspopup="dialog"
                 onClick={onSelect}
-            />
-            <Modal triggerRef={thumbnailRef}>
-                <img src={`/${currentSrc}`} />
+            >
+                <img
+                    src={`/${thumbnail.src}`}
+                    alt={thumbnail.alt}
+                    width={thumbnail.width}
+                    height={thumbnail.height}
+                    loading="lazy"
+                />
+            </button>
+            <Modal triggerRef={triggerRef}>
+                <img src={`/${current.src}`} alt={current.alt} width={current.width} height={current.height} />
             </Modal>
         </>
     )

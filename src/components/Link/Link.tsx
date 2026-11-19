@@ -1,5 +1,15 @@
 import './Link.css'
 
+// Own sites should receive referrer info; everything else is opened with noreferrer.
+const isOwnSite = (href: string) => {
+    try {
+        const { hostname } = new URL(href);
+        return hostname === 'tuckbick.com' || hostname.endsWith('.tuckbick.com');
+    } catch {
+        return false;
+    }
+}
+
 export default function Link({
     href,
     target,
@@ -15,10 +25,10 @@ export default function Link({
 }) {
     return (
         <a
-            className={`link ${inline && 'link--inline'}`}
+            className={inline ? 'link link--inline' : 'link'}
             href={href}
             target={target ?? "_blank"}
-            rel={rel ?? "noreferrer"}
+            rel={rel ?? (isOwnSite(href) ? "noopener" : "noopener noreferrer")}
         >
             {children}
         </a>
