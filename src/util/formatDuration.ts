@@ -9,5 +9,9 @@ export default function formatDuration(duration: Duration) {
     const start = formatDate(duration.start)
     const end = duration.end ? formatDate(duration.end) : 'Present';
 
+    if (start === end) {
+        return start;
+    }
+
     return `${start} - ${end}`
 }

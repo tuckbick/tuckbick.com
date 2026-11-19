@@ -16,7 +16,7 @@ export default function Projects() {
         <Section id="projects" title="Projects">
             <SectionList>
                 {data.map(({ name, role, duration, links, description, images }, index) => {
-                    const displayDuration = formatDuration(duration);
+                    const displayDuration = duration ? formatDuration(duration) : null;
                     const displayRole = role ? <><span className="del"> — </span><em>{role}</em></> : null;
 
                     return (

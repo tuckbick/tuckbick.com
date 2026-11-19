@@ -2,6 +2,34 @@ import type { Duration } from "../../util/formatDuration"
 
 export default [
     {
+        name: "Backdate",
+        duration: {
+            start: "2026-10-02"
+        } as Duration,
+        links: [
+            { href: "https://backdate.tuckbick.com", label: "Homepage", platform: "www" },
+            { href: "https://github.com/tuckbick/backdate", label: "GitHub", platform: "github" }
+        ],
+        description: [
+            "Backdate is a work in progress. The idea came about while my Dad was suffering from Parkinson's disease. As dementia took hold, I realized how much he had forgotten or misremembered, and I didn't want my own memories to fall by the wayside. I'm not great at keeping a day-to-day journal, though.",
+            "It's a place to write down your memories, a bit like journaling but focused on past events. It provides tools to organize them by date, people, places, and other metadata, along with photos and other relics."
+        ]
+    },
+    {
+        name: "Copy as Markdown",
+        duration: {
+            start: "2026-11-09",
+            end: "2026-11-09"
+        } as Duration,
+        links: [
+            { href: "https://copy-as-markdown.tuckbick.com", label: "Homepage", platform: "www" },
+            { href: "https://github.com/tuckbick/copy-as-markdown", label: "GitHub", platform: "github" }
+        ],
+        description: [
+            "While applying for jobs, I often needed to copy text from a webpage into a Markdown document. I wanted to keep the original formatting while converting it to Markdown syntax, so I built this tool to make that easier."
+        ]
+    },
+    {
         name: "Studio Marlo",
         duration: {
             start: "2021-11-01"
