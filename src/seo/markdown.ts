@@ -1,14 +1,14 @@
-import formatDuration from './formatDuration'
+import formatDuration from '../util/formatDuration'
 
 import intro from '../content/Intro/data'
 import projects from '../content/Projects/data'
 import work from '../content/Work/data'
 import contact from '../content/Contact/data'
 
-export const SITE_URL = 'https://tuckbick.com'
+import { SITE_URL } from './siteUrl'
 
 /** Plain Markdown rendition of the whole site, built from the same data files as the React components. */
-export function generateMarkdown(): string {
+export default function generateMarkdown(): string {
     const lines: string[] = [
         '# Tucker Bickler',
         '',
@@ -43,36 +43,4 @@ export function generateMarkdown(): string {
     }
 
     return lines.join('\n') + '\n'
-}
-
-/** llms.txt per https://llmstxt.org */
-export function generateLlmsTxt(): string {
-    const projectLinks = projects.flatMap(p => (p.links ?? []).map(l => `- [${p.name} ${l.label}](${l.href})`))
-    return [
-        '# Tucker Bickler',
-        '',
-        `> ${intro.summary.join(' ')}`,
-        '',
-        '## Site',
-        '',
-        `- [Full site as Markdown](${SITE_URL}/index.md): bio, projects, work history, and contact details`,
-        `- [Website](${SITE_URL}/): the same content as HTML`,
-        '',
-        '## Projects',
-        '',
-        ...projectLinks,
-        '',
-    ].join('\n')
-}
-
-export function generateSitemap(): string {
-    const lastmod = new Date().toISOString().slice(0, 10)
-    return `<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>${SITE_URL}/</loc>
-    <lastmod>${lastmod}</lastmod>
-  </url>
-</urlset>
-`
 }
