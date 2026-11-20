@@ -37,7 +37,7 @@ src/
   components/         shared UI components (Section, Gallery, Modal, Icon, ...)
   seo/                generators for index.md, llms.txt, and sitemap.xml
   util/               date and duration formatting
-public/               static assets (project images, privacy.html served at /privacy, robots.txt, _headers)
+public/               static assets (project images, self-hosted fonts, privacy.html served at /privacy, robots.txt, _headers)
 wrangler.jsonc        static assets configuration (unknown paths get a 404 from Cloudflare)
 ```
 
@@ -53,3 +53,5 @@ Section content lives in data files, separate from the components:
 The generated `index.md`, `llms.txt`, and `sitemap.xml` are built from these same data files, so no separate edits are needed.
 
 Requests to `/` with `Accept: text/markdown` get `index.md` through a Cloudflare URL Rewrite rule (Rules > Transform Rules in the dashboard) that rewrites `/` to `/index.md`. That rule is not part of this repo.
+
+A Cloudflare custom rule ("Block unknown paths on tuckbick.com", under Security > Security rules) blocks unknown paths on tuckbick.com and www.tuckbick.com, so it acts as a path allowlist: only `/`, `/privacy`, `/llms.txt`, `/index.md`, `/sitemap.xml`, `/robots.txt`, and paths under `/assets/`, `/images/` and `/fonts/` pass. Like the rewrite rule, it lives in the dashboard, not in this repo; update it when adding new top-level paths. The full expression is in `AGENTS.md`.
