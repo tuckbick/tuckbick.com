@@ -28,15 +28,16 @@ npm run deploy
 
 ```
 index.html            HTML template, metadata, and JSON-LD structured data
-prerender.js          renders the app to HTML and injects it into dist/index.html
+prerender.js          renders the app to HTML into dist/index.html and writes index.md, llms.txt, sitemap.xml
 src/
   main.tsx            client entry (hydrates prerendered markup)
   entry-server.tsx    server render entry used by prerender.js
   App.tsx             top-level layout
-  content/            page sections: Header, Projects, Work, Contact
+  content/            page sections: Header, Intro, Projects, Work, Contact
   components/         shared UI components (Section, Gallery, Modal, Icon, ...)
+  seo/                generators for index.md, llms.txt, and sitemap.xml
   util/               date and duration formatting
-public/               static assets (project images, privacy.html served at /privacy)
+public/               static assets (project images, privacy.html served at /privacy, robots.txt, _headers)
 wrangler.jsonc        static assets configuration (unknown paths get a 404 from Cloudflare)
 ```
 
@@ -44,6 +45,9 @@ wrangler.jsonc        static assets configuration (unknown paths get a 404 from 
 
 Section content lives in data files, separate from the components:
 
+- `src/content/Intro/data.ts`: intro summary paragraphs
 - `src/content/Projects/data.ts`: projects, links, descriptions, and gallery images (stored in `public/projects/<name>/`)
 - `src/content/Work/data.ts`: work history
 - `src/content/Contact/data.ts`: contact links
+
+The generated `index.md`, `llms.txt`, and `sitemap.xml` are built from these same data files, so no separate edits are needed.
