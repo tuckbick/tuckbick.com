@@ -1,4 +1,12 @@
-export default [
+import type { IconName } from '../../components/Icon/Icon';
+
+export interface ContactLink {
+    platform: IconName
+    text: string
+    href: string
+}
+
+const contact: ContactLink[] = [
     {
         platform: 'email',
         text: 'hello@tuckbick.com',
@@ -25,3 +33,5 @@ export default [
         href: 'https://www.facebook.com/tuckbick'
     }
 ];
+
+export default contact;

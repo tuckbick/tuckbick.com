@@ -46,7 +46,7 @@ wrangler.jsonc        static assets configuration (unknown paths get a 404 from 
 Section content lives in data files, separate from the components:
 
 - `src/content/Intro/data.ts`: intro summary paragraphs
-- `src/content/Projects/data.ts`: projects, links, descriptions, and gallery images (stored in `public/projects/<name>/`)
+- `src/content/Projects/data.ts`: projects, links, descriptions, and gallery images (stored in `public/images/projects/<name>/`)
 - `src/content/Work/data.ts`: work history
 - `src/content/Contact/data.ts`: contact links
 

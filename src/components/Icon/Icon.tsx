@@ -20,11 +20,13 @@ const iconMap = {
     x,
 }
 
+export type IconName = keyof typeof iconMap
+
 export default function Icon({
     name,
     size = 'md'
 }: {
-    name: keyof typeof iconMap,
+    name: IconName,
     size?: 'sm' | 'md' | 'lg'
 }) {
     const Icon = iconMap[name]

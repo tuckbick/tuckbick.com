@@ -33,7 +33,7 @@ export default function Projects() {
                                             href={href}
                                             inline
                                         >
-                                            <Icon name={platform as any} size="sm" /> <span className="visually-hidden">{name} </span>{label}
+                                            <Icon name={platform} size="sm" /> <span className="visually-hidden">{name} </span>{label}
                                         </Link>
                                     ))}
                                 </div>

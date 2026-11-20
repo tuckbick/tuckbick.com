@@ -19,7 +19,7 @@ export default function Contact() {
                                 rel={platform === 'email' ? "" : undefined}
                                 href={href}
                             >
-                                <Icon name={platform as any} /> {text}
+                                <Icon name={platform} /> {text}
                             </Link>
                         </SectionListItem>
                     )

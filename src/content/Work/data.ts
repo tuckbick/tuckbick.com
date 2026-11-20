@@ -1,13 +1,21 @@
 import type { Duration } from '../../util/formatDuration'
 
-export default [
+export interface Job {
+    company: string
+    role: string
+    duration: Duration
+    location: string[]
+    description: string[]
+}
+
+const work: Job[] = [
     {
         company: "Expedia Group",
         role: "Senior Software Engineer",
         duration: {
             start: "2020-09-01",
             end: "2026-01-01"
-        } as Duration,
+        },
         location: ["Denver, CO", "Chicago, IL"],
         description: [
             "Re-architected core backend APIs and services to support decoupled microservices across Expedia's global travel products.",
@@ -24,7 +32,7 @@ export default [
         duration: {
             start: '2019-05-01',
             end: '2020-09-01'
-        } as Duration,
+        },
         location: ['Austin, TX', 'Denver, CO'],
         description: [
             "Managed and expanded \"Catalyst,\" Vrbo's shared Node.js platform, building plugins and core tooling used by product engineering teams across the company.",
@@ -38,7 +46,7 @@ export default [
         duration: {
             start: '2014-03-01',
             end: '2019-05-01'
-        } as Duration,
+        },
         location: ['Austin, TX'],
         description: [
             "Steered architectural work on \"Catalyst,\" HomeAway's shared Node.js framework, ensuring standard patterns and easy service integrations across teams.",
@@ -52,7 +60,7 @@ export default [
         duration: {
             start: '2013-06-01',
             end: '2014-03-01'
-        } as Duration,
+        },
         location: ['Austin, TX'],
         description: [
             "Built developer-facing REST APIs, documentation sites, user dashboards, and browser extensions for identity authentication.",
@@ -65,7 +73,7 @@ export default [
         duration: {
             start: '2012-12-01',
             end: '2013-06-01'
-        } as Duration,
+        },
         location: ['Austin, TX'],
         description: [
             "Built and maintained localized web services and internal localization management tools for enterprise clients like UPS and 7-Eleven."
@@ -77,10 +85,12 @@ export default [
         duration: {
             start: '2011-09-01',
             end: '2012-12-01'
-        } as Duration,
+        },
         location: ['Austin, TX'],
         description: [
             "Developed web applications and supporting iOS software for commercial clients like Pfizer and Macy's."
         ]
     }
 ]
+
+export default work
