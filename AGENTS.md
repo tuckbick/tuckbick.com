@@ -30,6 +30,8 @@ Single-page personal site (React 19 + TypeScript + Vite 8) deployed as static as
 
 **`index.html`** holds the metadata (SEO/Open Graph tags) and expanded JSON-LD structured data, and the favicon is an inlined data URI (swapped on an interval by `src/content/Header/useFavicon.ts`).
 
+**Fonts:** Nunito (body) and Zain (headings) load from Google Fonts via a single non-blocking `<link rel="preload" as="style" ... onload="this.onload=null;this.rel='stylesheet'">` in `index.html`, with a `<noscript>` stylesheet fallback (keep the two URLs identical). `display=swap` shows fallback fonts first, then swaps. The URL requests only the variants the site actually uses: Nunito `wght@400;600` (body, and `.link` at 600) and Zain `ital,wght@0,700;1,400` (bold headings, and the italic `<em>` roles inside them; Zain has no 700 italic, so the browser fakes the bold). If you add a new weight/style (e.g. `<strong>`, Nunito italics, a new `font-weight`), add it to both URLs, or the browser will synthesize it. Cloudflare Fonts is not enabled; it may not recognize the preload/onload pattern.
+
 **Deploy:** pushing to `main` runs `.github/workflows/deploy.yml` (`npm ci`, `npm run build`, `wrangler-action`), which needs the `CLOUDFLARE_API_TOKEN` and `CLOUDFLARE_ACCOUNT_ID` repo secrets.
 
 ## Keeping docs current
