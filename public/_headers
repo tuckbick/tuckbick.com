@@ -1,8 +1,10 @@
 /
   Link: </index.md>; rel="alternate"; type="text/markdown"
+  Vary: Accept
 
 /index.md
   Content-Type: text/markdown; charset=utf-8
+  Vary: Accept
 
 /llms.txt
   Content-Type: text/plain; charset=utf-8

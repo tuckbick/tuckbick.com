@@ -51,3 +51,5 @@ Section content lives in data files, separate from the components:
 - `src/content/Contact/data.ts`: contact links
 
 The generated `index.md`, `llms.txt`, and `sitemap.xml` are built from these same data files, so no separate edits are needed.
+
+Requests to `/` with `Accept: text/markdown` get `index.md` through a Cloudflare URL Rewrite rule (Rules > Transform Rules in the dashboard) that rewrites `/` to `/index.md`. That rule is not part of this repo.
