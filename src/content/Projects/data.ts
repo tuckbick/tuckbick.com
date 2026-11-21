@@ -54,11 +54,11 @@ const projects: Project[] = [
             "During an employment sabbatical in 2026, I redesigned the circuit board and electronics, while also upgrading the firmware to support some more advanced capabilities. I also took this opportunity to participate in a local art fair to showcase my work — it was a big success!"
         ],
         images: [
-            { src: "images/projects/marlo/project0.jpg", width: 640, height: 620, alt: "Plotter artwork of faceted, rock-like forms drawn as dense blue and green grid lines" },
+            { src: "images/projects/marlo/project0.jpg", width: 640, height: 640, alt: "Plotter artwork of faceted, rock-like forms drawn as dense blue and green grid lines" },
             { src: "images/projects/marlo/project1.jpg", width: 640, height: 640, alt: "Black and white plotter artwork of a lumpy, star-shaped form built from fine wireframe lines" },
-            { src: "images/projects/marlo/project2.jpg", width: 640, height: 475, alt: "The large-format pen plotter: a black aluminum frame with a moving gantry drawing on a whiteboard-sized sheet" },
-            { src: "images/projects/marlo/project3.jpg", width: 640, height: 616, alt: "The redesigned green plotter circuit board with an ESP32 module, stepper drivers with red heat sinks, capacitors and terminal blocks" },
-            { src: "images/projects/marlo/project4.jpg", width: 640, height: 480, alt: "A person seated in the Studio Marlo booth at a local art fair, surrounded by framed plotter prints" }
+            { src: "images/projects/marlo/project2.jpg", width: 640, height: 469, alt: "The large-format pen plotter: a black aluminum frame with a moving gantry drawing on a whiteboard-sized sheet" },
+            { src: "images/projects/marlo/project3.jpg", width: 640, height: 640, alt: "The redesigned green plotter circuit board with an ESP32 module, stepper drivers with red heat sinks, capacitors and terminal blocks" },
+            { src: "images/projects/marlo/project4.jpg", width: 640, height: 399, alt: "A person seated in the Studio Marlo booth at a local art fair, surrounded by framed plotter prints" }
         ]
     },
     {
@@ -74,9 +74,9 @@ const projects: Project[] = [
         ],
         description: ["Picardy is an online interactive platform for developing theory and musicianship skills for teachers and students. What started as a small project between friends, grew into a much larger and more comprehensive initiative, and is now something I'm proud to say is used in classrooms and homes across the world."],
         images: [
-            { src: "images/projects/picardy/project0.jpg", width: 640, height: 465, alt: "Six members of the Picardy team smiling together at the Picardy conference booth" },
-            { src: "images/projects/picardy/project1.jpg", width: 640, height: 480, alt: "Two Picardy team members seated at the Picardy booth with laptops showing the platform" },
-            { src: "images/projects/picardy/project2.jpg", width: 640, height: 542, alt: "Picardy lesson screen asking the learner to select the key signature for C major from four options" }
+            { src: "images/projects/picardy/project0.jpg", width: 640, height: 441, alt: "Six members of the Picardy team smiling together at the Picardy conference booth" },
+            { src: "images/projects/picardy/project1.jpg", width: 640, height: 423, alt: "Two Picardy team members seated at the Picardy booth with laptops showing the platform" },
+            { src: "images/projects/picardy/project2.jpg", width: 640, height: 530, alt: "Picardy lesson screen asking the learner to select the key signature for C major from four options" }
         ]
     }
 ]

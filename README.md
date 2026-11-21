@@ -28,6 +28,7 @@ npm run deploy
 
 ```
 index.html            HTML template, metadata, and JSON-LD structured data
+scripts/make-images.mjs  generates project gallery images (see "Project images")
 prerender.js          renders the app to HTML into dist/index.html and writes index.md, llms.txt, sitemap.xml
 src/
   main.tsx            client entry (hydrates prerendered markup)
@@ -49,6 +50,16 @@ Section content lives in data files, separate from the components:
 - `src/content/Projects/data.ts`: projects, links, descriptions, and gallery images (stored in `public/images/projects/<name>/`)
 - `src/content/Work/data.ts`: work history
 - `src/content/Contact/data.ts`: contact links
+
+### Project images
+
+Gallery images are generated from high-resolution originals (JPEG, PNG, WebP, or HEIC on macOS), which are not kept in the repo:
+
+```sh
+node scripts/make-images.mjs [sourceDir]   # default sourceDir: public/images/projects/source
+```
+
+`sourceDir` holds `<project>/<name>.<ext>`. For each image the script writes `<name>.thumb.{webp,jpg}` (256px), `<name>.{webp,jpg}` (640px) and `<name>@2x.{webp,jpg}` (1280px) to `public/images/projects/<project>/`, and prints the `width`/`height` to use in `data.ts`. In `data.ts`, reference the 640px `.jpg` (e.g. `images/projects/marlo/project0.jpg`); the other files are derived from that path. Delete the source folder afterwards so it isn't deployed.
 
 The generated `index.md`, `llms.txt`, and `sitemap.xml` are built from these same data files, so no separate edits are needed.
 
