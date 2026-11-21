@@ -4,18 +4,22 @@
     gap: 1rem;
     margin-top: 0.75rem;
     padding: 0.25rem 0;
+}
 
-    .gallery-thumbnail {
-        display: flex;
+.gallery-thumbnail {
+    display: flex;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+
+    picture {
+        display: contents;
+    }
+
+    img {
+        display: block;
+        object-fit: cover;
+        width: 128px;
+        height: auto;
         border-radius: var(--border-radius);
-        cursor: pointer;
-
-        img {
-            display: block;
-            object-fit: cover;
-            width: 128px;
-            height: auto;
-            border-radius: var(--border-radius);
-        }
     }
 }

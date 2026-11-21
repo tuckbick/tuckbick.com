@@ -1,6 +1,7 @@
 import { useRef, useState, useEffect } from "react";
 
 import Modal from "../Modal/Modal";
+import { imageSources } from "./imageSources";
 
 import './Gallery.css';
 
@@ -52,6 +53,7 @@ interface GalleryItemProps {
 
 function GalleryItem({ thumbnail, current, onSelect }: GalleryItemProps) {
     const triggerRef = useRef<HTMLButtonElement>(null);
+    const { thumb } = imageSources(thumbnail.src);
 
     return (
         <>
@@ -62,13 +64,17 @@ function GalleryItem({ thumbnail, current, onSelect }: GalleryItemProps) {
                 aria-haspopup="dialog"
                 onClick={onSelect}
             >
-                <img
-                    src={`/${thumbnail.src}`}
-                    alt={thumbnail.alt}
-                    width={thumbnail.width}
-                    height={thumbnail.height}
-                    loading="lazy"
-                />
+                <picture>
+                    <source type="image/webp" srcSet={thumb.webp} />
+                    <img
+                        src={thumb.jpg}
+                        alt={thumbnail.alt}
+                        width={thumbnail.width}
+                        height={thumbnail.height}
+                        loading="lazy"
+                        decoding="async"
+                    />
+                </picture>
             </button>
             <Modal triggerRef={triggerRef}>
                 <img src={`/${current.src}`} alt={current.alt} width={current.width} height={current.height} />
