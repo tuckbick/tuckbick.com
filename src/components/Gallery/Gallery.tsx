@@ -1,7 +1,7 @@
 import { useRef, useState, useEffect } from "react";
 
 import Modal from "../Modal/Modal";
-import { imageSources } from "./imageSources";
+import { imageSources, MODAL_IMAGE_SIZES, prefetchModalImage } from "./imageSources";
 
 import './Gallery.css';
 
@@ -54,6 +54,7 @@ interface GalleryItemProps {
 function GalleryItem({ thumbnail, current, onSelect }: GalleryItemProps) {
     const triggerRef = useRef<HTMLButtonElement>(null);
     const { thumb } = imageSources(thumbnail.src);
+    const prefetch = () => prefetchModalImage(thumbnail.src);
 
     return (
         <>
@@ -63,6 +64,9 @@ function GalleryItem({ thumbnail, current, onSelect }: GalleryItemProps) {
                 ref={triggerRef}
                 aria-haspopup="dialog"
                 onClick={onSelect}
+                onPointerEnter={prefetch}
+                onFocus={prefetch}
+                onTouchStart={prefetch}
             >
                 <picture>
                     <source type="image/webp" srcSet={thumb.webp} />
@@ -77,8 +81,36 @@ function GalleryItem({ thumbnail, current, onSelect }: GalleryItemProps) {
                 </picture>
             </button>
             <Modal triggerRef={triggerRef}>
-                <img src={`/${current.src}`} alt={current.alt} width={current.width} height={current.height} />
+                {/* key: remount on arrow-key navigation so the fade-in restarts */}
+                <GalleryModalImage key={current.src} image={current} />
             </Modal>
         </>
+    )
+}
+
+/** Full-size image with the (already cached) thumbnail as a placeholder until it loads. */
+function GalleryModalImage({ image }: { image: GalleryImage }) {
+    const [loaded, setLoaded] = useState(false);
+    const sources = imageSources(image.src);
+
+    return (
+        <div
+            className={`gallery-modal-image${loaded ? ' is-loaded' : ''}`}
+            style={{ backgroundImage: `image-set(url(${sources.thumb.webp}) type("image/webp"), url(${sources.thumb.jpg}) type("image/jpeg"))` }}
+        >
+            <picture>
+                <source type="image/webp" srcSet={sources.webpSrcSet} sizes={MODAL_IMAGE_SIZES} />
+                <img
+                    src={sources.jpg}
+                    srcSet={sources.jpgSrcSet}
+                    sizes={MODAL_IMAGE_SIZES}
+                    alt={image.alt}
+                    width={image.width}
+                    height={image.height}
+                    onLoad={() => setLoaded(true)}
+                    onError={() => setLoaded(true)}
+                />
+            </picture>
+        </div>
     )
 }

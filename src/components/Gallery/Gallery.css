@@ -23,3 +23,25 @@
         border-radius: var(--border-radius);
     }
 }
+
+/* Rendered inside the Modal: the thumbnail (background) shows until the full image loads. */
+.gallery-modal-image {
+    background-size: cover;
+    background-position: center;
+
+    img {
+        display: block;
+        opacity: 0;
+        transition: opacity 200ms ease-out;
+    }
+
+    &.is-loaded img {
+        opacity: 1;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        img {
+            transition: none;
+        }
+    }
+}
