@@ -36,7 +36,9 @@ jobs:
         with:
           name: lighthouse-reports-${{ github.run_attempt }}
           path: .lighthouseci/
-          if-no-files-found: ignore
+          # .lighthouseci is a dot-directory, which upload-artifact skips by default.
+          include-hidden-files: true
+          if-no-files-found: warn
           retention-days: 14
 
       # Pull requests only build and check; only pushes to main deploy.
