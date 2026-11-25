@@ -8,11 +8,12 @@ This file provides guidance to AI coding agents (Claude Code, Codex, etc.) when 
 npm run dev       # Vite dev server
 npm run lint      # oxlint (config: .oxlintrc.json)
 npm run build     # tsc -b && vite build && node prerender.js  -> dist/
+npm run lhci      # lhci autorun: Lighthouse (mobile, 3 runs) on dist/ + budget assertions (build first)
 npm run preview   # build, then vite preview
 npm run deploy    # build, then wrangler deploy
 ```
 
-There is no test suite. `npm run build` (type-check + prerender) and `npm run lint` are the verification steps.
+There is no test suite. `npm run build` (type-check + prerender), `npm run lint` and `npm run lhci` (performance budgets) are the verification steps.
 
 ## Architecture
 
@@ -40,9 +41,9 @@ Allowed: the exact paths `/`, `/privacy`, `/llms.txt`, `/index.md`, `/sitemap.xm
 
 **Fonts:** Nunito (body) and Zain (headings) are self-hosted as static latin-subset `.woff2` files in `public/fonts/` (from `@fontsource`, OFL licenses alongside), declared with `@font-face` (`font-display: swap`) at the top of `src/index.css`. Only the variants the site uses are included: Nunito 400 and 600 (body; `.link` at 600) and Zain 700 (headings) and 400 italic (the `<em>` roles inside headings; Zain has no 700 italic, and `font-synthesis: none` is set in `:root`, so those render at regular weight rather than faux-bold). `index.html` preloads the two above-the-fold files (Nunito 400, Zain 700) with `crossorigin`, and `public/_headers` gives `/fonts/*` a long immutable cache. If you add a new weight/style (e.g. `<strong>`, Nunito italics, a new `font-weight`), add the matching `.woff2` and `@font-face` rule, or it will fall back to the nearest face. Non-latin characters are not covered by the subset.
 
-**Performance baseline:** `docs/performance.md` records mobile Lighthouse and WebPageTest numbers (date, commit, tools, settings, and steps to reproduce them). Budget and monitoring work uses them as starting thresholds. Add a new dated baseline instead of editing the old numbers.
+**Performance baseline:** `docs/performance.md` records mobile Lighthouse and WebPageTest numbers (date, commit, tools, settings, and steps to reproduce them). Budget and monitoring work uses them as starting thresholds. Add a new dated baseline instead of editing the old numbers. The budgets enforced in CI live in `lighthouserc.json` (`ci.assert.assertions`, checked with `aggregationMethod: "median-run"`). Their values and reasoning are in the "Budgets (Lighthouse CI)" section of `docs/performance.md`. When you change a budget, update that section too. Adding gallery images uses up the `resource-summary:image:size` budget.
 
-**Deploy:** pushing to `main` runs `.github/workflows/deploy.yml` (`npm ci`, `npm run build`, `wrangler-action`), which needs the `CLOUDFLARE_API_TOKEN` and `CLOUDFLARE_ACCOUNT_ID` repo secrets.
+**Deploy:** pushing to `main` runs `.github/workflows/deploy.yml` (job `build-and-deploy`: `npm ci`, `npm run build`, `npm run lhci`, upload `.lighthouseci/` as the `lighthouse-reports-<attempt>` artifact, even on failure, then `wrangler-action`), which needs the `CLOUDFLARE_API_TOKEN` and `CLOUDFLARE_ACCOUNT_ID` repo secrets. A failing budget stops the job before the publish. Pull requests to `main` run the same workflow, but the publish step is skipped (`if: github.event_name == 'push' && github.ref == 'refs/heads/main'`). The steps before it use no secrets, so they also work on PRs from forks. A `concurrency` group cancels superseded PR runs but never a `main` deploy. Lighthouse CI reports go to the filesystem/artifact only, not to public temporary storage.
 
 ## Keeping docs current
 
