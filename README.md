@@ -19,6 +19,8 @@ npm run preview   # build, then serve the production output locally
 
 Pushing to `main` triggers `.github/workflows/deploy.yml`, which builds the site, checks it with Lighthouse CI, and deploys it with Wrangler. It requires the `CLOUDFLARE_API_TOKEN` and `CLOUDFLARE_ACCOUNT_ID` repository secrets. Pull requests to `main` run the same build and Lighthouse CI check but don't deploy.
 
+Pull requests are pre-filled from `.github/pull_request_template.md`, a short description plus a self-review checklist to work through before merging.
+
 ### Performance budgets
 
 `lighthouserc.json` sets mobile performance budgets (score, LCP, CLS, TBT, and JavaScript, image and total transfer size). Lighthouse CI audits the prerendered `dist/` 3 times and checks the median run. If a budget is exceeded, the workflow fails before the publish step, so the deploy is blocked. The reports are uploaded as a `lighthouse-reports-<attempt>` artifact on every run (open the run in the Actions tab). Locally they're written to `.lighthouseci/reports/`.
