@@ -11,12 +11,19 @@ npm install
 npm run dev       # start the Vite dev server
 npm run lint      # run oxlint
 npm run build     # type-check, build, and prerender to dist/
+npm run lhci      # run Lighthouse CI against dist/ and check performance budgets (build first)
 npm run preview   # build, then serve the production output locally
 ```
 
 ## Deployment
 
-Pushing to `main` triggers `.github/workflows/deploy.yml`, which builds the site and deploys it with Wrangler. It requires the `CLOUDFLARE_API_TOKEN` and `CLOUDFLARE_ACCOUNT_ID` repository secrets.
+Pushing to `main` triggers `.github/workflows/deploy.yml`, which builds the site, checks it with Lighthouse CI, and deploys it with Wrangler. It requires the `CLOUDFLARE_API_TOKEN` and `CLOUDFLARE_ACCOUNT_ID` repository secrets. Pull requests to `main` run the same build and Lighthouse CI check but don't deploy.
+
+### Performance budgets
+
+`lighthouserc.json` sets mobile performance budgets (score, LCP, CLS, TBT, and JavaScript, image and total transfer size). Lighthouse CI audits the prerendered `dist/` 3 times and checks the median run. If a budget is exceeded, the workflow fails before the publish step, so the deploy is blocked. The reports are uploaded as a `lighthouse-reports-<attempt>` artifact on every run (open the run in the Actions tab). Locally they're written to `.lighthouseci/reports/`.
+
+To change a budget, edit its value in `lighthouserc.json`, run `npm run build && npm run lhci` to confirm, and record the new value and the reason in the budgets section of `docs/performance.md`. Adding gallery images uses up the image budget, so a new project may need it raised.
 
 To deploy manually:
 
@@ -39,9 +46,10 @@ src/
   seo/                generators for index.md, llms.txt, and sitemap.xml
   util/               date and duration formatting
 public/               static assets (project images, self-hosted fonts, privacy.html served at /privacy, robots.txt, _headers)
+lighthouserc.json     Lighthouse CI config and performance budgets
 wrangler.jsonc        static assets configuration (unknown paths get a 404 from Cloudflare)
 docs/
-  performance.md      mobile performance baseline (Lighthouse + WebPageTest), with how to reproduce it
+  performance.md      mobile performance baseline (Lighthouse + WebPageTest) and the Lighthouse CI budgets
 ```
 
 ## Editing content

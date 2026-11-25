@@ -90,6 +90,34 @@ From the same Lighthouse reports. These are not acted on here.
 - Legacy JavaScript: Lighthouse estimates 10 KiB of savings.
 - Cache lifetime: Lighthouse estimates 4 KiB of savings.
 
+## Budgets (Lighthouse CI)
+
+Since 2026-11-25, every push to `main` and every pull request to `main` runs Lighthouse CI (`npm run lhci`, configured in `lighthouserc.json`) on the prerendered `dist/`. A failed budget fails the workflow and blocks the deploy.
+
+How it runs: `@lhci/cli` 0.16.1, which bundles the same Lighthouse 13.6.0 as the baseline, with `preset: "perf"` and `formFactor: "mobile"` (Moto G Power emulation). It does 3 runs and checks the median run (`aggregationMethod: "median-run"`). Throttling is Lighthouse's default `simulate`, not the `devtools` throttling the baseline used, because it's steadier on shared CI runners. The page is served by Lighthouse CI's local static server, so the Cloudflare Web Analytics beacon and `_headers` aren't involved.
+
+| Budget | Limit | Baseline (`cc0a575`) | Local, 2026-11-25 (median of 3) | Reasoning |
+|---|---|---|---|---|
+| Performance score (`categories:performance`) | ≥ 0.9 | 99 | 0.99 | Lighthouse's "good" band, with room for runner noise |
+| LCP (`largest-contentful-paint`) | ≤ 2,500 ms | 1,721 ms | 1,552 ms | Core Web Vitals "good" limit |
+| CLS (`cumulative-layout-shift`) | ≤ 0.05 | 0.0012 | 0 | Half the 0.1 "good" limit, so any real layout shift fails |
+| TBT (`total-blocking-time`) | ≤ 200 ms | 68 ms | 31 ms | "Good" limit. Single runs went up to 160 ms in the baseline, so it isn't tighter |
+| JavaScript transfer (`resource-summary:script:size`) | ≤ 100 KiB | 85.4 KiB (incl. ~10 KiB beacon) | 73.6 KiB (1 file) | About 35% headroom over the site's own bundle |
+| Image transfer (`resource-summary:image:size`) | ≤ 100 KiB | ~1,106 KiB | 74.2 KiB (8 thumbnails) | About 35% over the current build. The baseline is far looser because it came before the 256px WebP thumbnails |
+| Total transfer (`resource-summary:total:size`) | ≤ 300 KiB | 1,272 KiB | 235.6 KiB (15 requests) | About 27% over the current build. The baseline also included Google Fonts, which have since been self-hosted |
+
+Byte budgets were set from the current build (about +25%, rounded up), not from the baseline, so the font and image work can't silently regress. Timing budgets use the Core Web Vitals "good" limits, which sit above both the baseline and the current build.
+
+Verified on 2026-11-25: adding about 60 KiB of incompressible data to the JS bundle failed `resource-summary:script:size` (120,759 bytes found), and replacing one thumbnail with a 1.8 MB WebP failed the image and total budgets. Both exited with status 1.
+
+### Changing a budget
+
+1. Edit the value in `lighthouserc.json` under `ci.assert.assertions` (byte values are in bytes, timings in ms).
+2. Run `npm run build && npm run lhci` to confirm the build passes. Reports land in `.lighthouseci/reports/`.
+3. Update the table above with the new limit, the measured value, and why it changed.
+
+In CI, reports for every run (pass or fail) are uploaded as the `lighthouse-reports-<attempt>` artifact on the workflow run. Expect to raise the image budget when adding a project with several new gallery images: each thumbnail is about 9 KiB.
+
 ## How to reproduce
 
 1. Check which commit is live: `gh run list --workflow deploy.yml --limit 1` gives the deployed SHA, and `curl -s https://tuckbick.com/ | grep -oE 'index-[A-Za-z0-9_-]+\.(js|css)'` gives the live asset names to compare against the ones above.

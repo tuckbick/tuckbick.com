@@ -3,8 +3,15 @@ on:
   push:
     branches:
       - main
+  pull_request:
+    branches:
+      - main
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  # Cancel superseded PR runs, but never an in-progress deploy from main.
+  cancel-in-progress: ${{ github.ref != 'refs/heads/main' }}
 jobs:
-  deploy:
+  build-and-deploy:
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -19,7 +26,24 @@ jobs:
       - name: Build site
         run: npm run build
 
+      # Fails the job (and so blocks the publish) if a budget in lighthouserc.json is exceeded.
+      - name: Lighthouse CI
+        run: npm run lhci
+
+      - name: Upload Lighthouse reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: lighthouse-reports-${{ github.run_attempt }}
+          path: .lighthouseci/
+          # .lighthouseci is a dot-directory, which upload-artifact skips by default.
+          include-hidden-files: true
+          if-no-files-found: warn
+          retention-days: 14
+
+      # Pull requests only build and check; only pushes to main deploy.
       - name: Publish to Cloudflare Workers
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
         uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}

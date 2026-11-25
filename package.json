@@ -11,6 +11,7 @@
     "dev": "vite",
     "build": "tsc -b && vite build && node prerender.js",
     "lint": "oxlint",
+    "lhci": "lhci autorun",
     "preview": "npm run build && vite preview",
     "deploy": "npm run build && wrangler deploy"
   },
@@ -20,6 +21,7 @@
   },
   "devDependencies": {
     "@cloudflare/vite-plugin": "^1.56.0",
+    "@lhci/cli": "0.16.1",
     "@types/node": "^24.13.5",
     "@types/react": "^19.2.18",
     "@types/react-dom": "^19.2.7",
