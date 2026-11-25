@@ -40,6 +40,8 @@ Allowed: the exact paths `/`, `/privacy`, `/llms.txt`, `/index.md`, `/sitemap.xm
 
 **Fonts:** Nunito (body) and Zain (headings) are self-hosted as static latin-subset `.woff2` files in `public/fonts/` (from `@fontsource`, OFL licenses alongside), declared with `@font-face` (`font-display: swap`) at the top of `src/index.css`. Only the variants the site uses are included: Nunito 400 and 600 (body; `.link` at 600) and Zain 700 (headings) and 400 italic (the `<em>` roles inside headings; Zain has no 700 italic, and `font-synthesis: none` is set in `:root`, so those render at regular weight rather than faux-bold). `index.html` preloads the two above-the-fold files (Nunito 400, Zain 700) with `crossorigin`, and `public/_headers` gives `/fonts/*` a long immutable cache. If you add a new weight/style (e.g. `<strong>`, Nunito italics, a new `font-weight`), add the matching `.woff2` and `@font-face` rule, or it will fall back to the nearest face. Non-latin characters are not covered by the subset.
 
+**Performance baseline:** `docs/performance.md` records mobile Lighthouse and WebPageTest numbers (date, commit, tools, settings, and steps to reproduce them). Budget and monitoring work uses them as starting thresholds. Add a new dated baseline instead of editing the old numbers.
+
 **Deploy:** pushing to `main` runs `.github/workflows/deploy.yml` (`npm ci`, `npm run build`, `wrangler-action`), which needs the `CLOUDFLARE_API_TOKEN` and `CLOUDFLARE_ACCOUNT_ID` repo secrets.
 
 ## Keeping docs current

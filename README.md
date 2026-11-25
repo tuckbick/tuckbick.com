@@ -40,6 +40,8 @@ src/
   util/               date and duration formatting
 public/               static assets (project images, self-hosted fonts, privacy.html served at /privacy, robots.txt, _headers)
 wrangler.jsonc        static assets configuration (unknown paths get a 404 from Cloudflare)
+docs/
+  performance.md      mobile performance baseline (Lighthouse + WebPageTest), with how to reproduce it
 ```
 
 ## Editing content
