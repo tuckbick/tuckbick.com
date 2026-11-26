@@ -18,9 +18,15 @@ interface Props {
 
 export default function Gallery({ images }: Props) {
     const [currentIndex, setCurrentIndex] = useState(0);
+    const galleryRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
         const handleKeyDown = (e: KeyboardEvent) => {
+            // Only navigate while this gallery's dialog is open. Otherwise arrow keys on the
+            // page (or in another gallery's dialog) would change this gallery's image and
+            // fetch full-size images into its closed, still-mounted dialogs.
+            if (!galleryRef.current?.querySelector('dialog[open]')) return;
+
             if (e.key === 'ArrowLeft') {
                 setCurrentIndex((prev) => (prev > 0 ? prev - 1 : images.length - 1));
             } else if (e.key === 'ArrowRight') {
@@ -32,7 +38,7 @@ export default function Gallery({ images }: Props) {
     }, [images.length]);
 
     return (
-        <div className="gallery">
+        <div className="gallery" ref={galleryRef}>
             {images.map((image, idx) => (
                 <GalleryItem
                     key={idx}

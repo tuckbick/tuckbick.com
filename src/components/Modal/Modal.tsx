@@ -13,6 +13,7 @@ interface Props {
 
 export default function Modal({ children, triggerRef, renderClosed = false }: Props) {
     const [isDialogOpen, setDialogOpen] = useState(false);
+    const [wasDialogOpen, setWasDialogOpen] = useState(false);
     const dialogRef = useRef<HTMLDialogElement>(null);
 
     useEffect(() => {
@@ -31,24 +32,23 @@ export default function Modal({ children, triggerRef, renderClosed = false }: Pr
             dialogRef.current?.showModal();
         } else {
             dialogRef.current?.close();
+            // close() restores focus to whatever had it before showModal(). Safari doesn't
+            // focus a button on mouse click, so that can be <body>: focus the trigger explicitly.
+            if (wasDialogOpen) triggerRef.current?.focus();
         }
-    }, [isDialogOpen])
+    }, [isDialogOpen, wasDialogOpen, triggerRef])
 
-    const closeDialog = () => setDialogOpen(false);
-
-    const onDialogKeyDown = useCallback((e: React.KeyboardEvent) => {
-        if (e.key === 'Escape') {
-            closeDialog();
-        }
-    }, []);
+    const closeDialog = () => {
+        setWasDialogOpen(true);
+        setDialogOpen(false);
+    }
 
     const onDialogClick = useCallback(() => closeDialog(), []);
 
     const onDialogContentClick = useCallback((e: React.MouseEvent<HTMLDivElement>) => e.stopPropagation(), []);
 
-
     return (
-        (isDialogOpen || renderClosed) && <dialog ref={dialogRef} className="modal" aria-modal="true" role="dialog" onClick={onDialogClick} onKeyDown={onDialogKeyDown} onClose={closeDialog}>
+        (isDialogOpen || wasDialogOpen || renderClosed) && <dialog ref={dialogRef} className="modal" onClick={onDialogClick} onClose={closeDialog}>
             <button className="focusable" type="button" onClick={closeDialog} aria-label="Close dialog" tabIndex={0}>
                 <Icon name="x" size="lg" />
             </button>

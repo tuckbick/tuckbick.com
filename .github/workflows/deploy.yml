@@ -41,6 +41,24 @@ jobs:
           if-no-files-found: warn
           retention-days: 14
 
+      # Fails the job (and so blocks the publish) on serious/critical axe violations or a keyboard/focus regression.
+      - name: Install Playwright browser
+        if: ${{ !cancelled() }}
+        run: npx playwright install --with-deps chromium
+
+      - name: Accessibility check
+        if: ${{ !cancelled() }}
+        run: npm run test:a11y
+
+      - name: Upload accessibility report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: a11y-report-${{ github.run_attempt }}
+          path: playwright-report/
+          if-no-files-found: warn
+          retention-days: 14
+
       # Pull requests only build and check; only pushes to main deploy.
       - name: Publish to Cloudflare Workers
         if: github.event_name == 'push' && github.ref == 'refs/heads/main'
