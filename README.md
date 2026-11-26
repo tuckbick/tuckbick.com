@@ -12,14 +12,23 @@ npm run dev       # start the Vite dev server
 npm run lint      # run oxlint
 npm run build     # type-check, build, and prerender to dist/
 npm run lhci      # run Lighthouse CI against dist/ and check performance budgets (build first)
+npm run test:a11y # run the accessibility tests against dist/ (build first)
 npm run preview   # build, then serve the production output locally
 ```
 
 ## Deployment
 
-Pushing to `main` triggers `.github/workflows/deploy.yml`, which builds the site, checks it with Lighthouse CI, and deploys it with Wrangler. It requires the `CLOUDFLARE_API_TOKEN` and `CLOUDFLARE_ACCOUNT_ID` repository secrets. Pull requests to `main` run the same build and Lighthouse CI check but don't deploy.
+Pushing to `main` triggers `.github/workflows/deploy.yml`, which builds the site, runs the [checks](#checks) (Lighthouse CI and the accessibility tests), and deploys it with Wrangler. If a check fails, the deploy is blocked. It requires the `CLOUDFLARE_API_TOKEN` and `CLOUDFLARE_ACCOUNT_ID` repository secrets. Pull requests to `main` run the same build and checks but don't deploy.
 
 Pull requests are pre-filled from `.github/pull_request_template.md`, a short description plus a self-review checklist to work through before merging.
+
+To deploy manually:
+
+```sh
+npm run deploy
+```
+
+## Checks
 
 ### Performance budgets
 
@@ -27,11 +36,20 @@ Pull requests are pre-filled from `.github/pull_request_template.md`, a short de
 
 To change a budget, edit its value in `lighthouserc.json`, run `npm run build && npm run lhci` to confirm, and record the new value and the reason in the budgets section of `docs/performance.md`. Adding gallery images uses up the image budget, so a new project may need it raised.
 
-To deploy manually:
+### Accessibility
 
-```sh
-npm run deploy
-```
+The site is built to be usable with a keyboard and a screen reader: it has landmarks and a heading structure, every button and link has an accessible name, gallery images have alt text, the dialogs are native `<dialog>` elements, and the gallery's image fade-in is turned off for `prefers-reduced-motion`.
+
+`npm run test:a11y` checks this automatically. It uses Playwright and [axe-core](https://github.com/dequelabs/axe-core) on the prerendered `dist/` page in Chromium (tests in `tests/a11y/`, config in `playwright.config.ts`). It checks:
+
+- the page against axe's WCAG 2.0 and 2.1 level A and AA rules (including colour contrast, names and alt text)
+- the open gallery and work-history dialogs against the same rules
+- the dialogs' keyboard behaviour: they open with Enter, the close button gets focus, they close with Escape or the close button, focus returns to the button that opened them, and the arrow keys move through gallery images
+- the tab order of the whole page
+
+Serious and critical axe violations fail the test, and so does a keyboard or focus problem. Minor and moderate violations are listed as warnings in the output without failing. The tests run on every pull request and push to `main`, after Lighthouse CI. A failure blocks the deploy. The Playwright HTML report is uploaded as an `a11y-report-<attempt>` artifact on every run, and written to `playwright-report/` locally.
+
+Automated checks catch only part of what matters, and the site hasn't been tested by hand with a screen reader. If something doesn't work for you, please get in touch (see the contact links on the site).
 
 ## Project structure
 
@@ -49,6 +67,8 @@ src/
   util/               date and duration formatting
 public/               static assets (project images, self-hosted fonts, privacy.html served at /privacy, robots.txt, _headers)
 lighthouserc.json     Lighthouse CI config and performance budgets
+playwright.config.ts  Playwright config for the accessibility tests (serves dist/ with vite preview)
+tests/a11y/           accessibility tests (axe-core, dialog keyboard behaviour, tab order)
 wrangler.jsonc        static assets configuration (unknown paths get a 404 from Cloudflare)
 docs/
   performance.md      mobile performance baseline (Lighthouse + WebPageTest) and the Lighthouse CI budgets

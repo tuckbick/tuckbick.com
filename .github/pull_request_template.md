@@ -21,6 +21,7 @@
 - [ ] `npm run build` passes (type-check + prerender)
 - [ ] `npm run lint` is clean
 - [ ] `npm run lhci` stays within budget, or `lighthouserc.json` and `docs/performance.md` explain the change
+- [ ] `npm run test:a11y` passes (and the tab-order list in `tests/a11y/page.spec.ts` matches any added or removed links, images or jobs)
 - [ ] Nothing touches `window`/`document` during render, so hydration still matches
 - [ ] Content edits in `data.ts` still come out right in `index.md`, `llms.txt` and `sitemap.xml`
 - [ ] New images have all six variants (from `scripts/make-images.mjs`) and `alt` text
