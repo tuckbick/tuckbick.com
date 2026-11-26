@@ -118,6 +118,20 @@ Verified on 2026-11-25: adding about 60 KiB of incompressible data to the JS bun
 
 In CI, reports for every run (pass or fail) are uploaded as the `lighthouse-reports-<attempt>` artifact on the workflow run. Expect to raise the image budget when adding a project with several new gallery images: each thumbnail is about 9 KiB.
 
+## Real-user data (Cloudflare Web Analytics)
+
+Lab numbers above come from a simulated phone. Real-user Core Web Vitals come from Cloudflare Web Analytics, enabled in the Cloudflare dashboard with automatic setup: Cloudflare injects the beacon (`static.cloudflareinsights.com/beacon.min.js`) into the HTML at the edge and it reports to `/cdn-cgi/rum` on the same host. Nothing in the repo loads it. It sets no cookies and collects no personal data.
+
+Weight: the beacon is about 10 KiB of JavaScript (measured in the baseline above). Because it's added at the edge, Lighthouse CI never loads it, so the `resource-summary:script:size` budget doesn't cover it. It fits within that budget's headroom: the site's own bundle (73.6 KiB) plus the beacon is about 84 KiB, under the 100 KiB limit. If the bundle grows past about 90 KiB, check the live total by hand.
+
+Where to read it: Cloudflare dashboard > Analytics & Logs > Web Analytics > tuckbick.com > Core Web Vitals. Use the 75th percentile, which is how Core Web Vitals are judged, and note the date range and the number of page views, since a small personal site has few samples.
+
+| Date range | Page views | LCP (p75) | INP (p75) | CLS (p75) | Notes |
+|---|---|---|---|---|---|
+| _to record after a few weeks of data_ | | | | | |
+
+Add a row for each new reading instead of editing old ones.
+
 ## How to reproduce
 
 1. Check which commit is live: `gh run list --workflow deploy.yml --limit 1` gives the deployed SHA, and `curl -s https://tuckbick.com/ | grep -oE 'index-[A-Za-z0-9_-]+\.(js|css)'` gives the live asset names to compare against the ones above.
