@@ -5,9 +5,11 @@
 /index.md
   Content-Type: text/markdown; charset=utf-8
   Vary: Accept
+  Link: <https://tuckbick.com/>; rel="canonical"
 
 /llms.txt
   Content-Type: text/plain; charset=utf-8
+  X-Robots-Tag: noindex
 
 /fonts/*
   Cache-Control: public, max-age=31536000, immutable

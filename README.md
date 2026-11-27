@@ -101,4 +101,6 @@ These live in the dashboard, not in this repo:
 
 - A URL Rewrite rule (Rules > Transform Rules) rewrites `/` to `/index.md` for requests with `Accept: text/markdown`.
 - A custom rule ("Block unknown paths on tuckbick.com", under Security > Security rules) acts as a path allowlist for tuckbick.com and www.tuckbick.com: only `/`, `/privacy`, `/llms.txt`, `/index.md`, `/sitemap.xml`, `/robots.txt`, and paths under `/assets/`, `/images/` and `/fonts/` pass. Update it when adding new top-level paths. The full expression is in `AGENTS.md`.
+- A Redirect Rule (Rules > Redirect Rules) 301-redirects `www.tuckbick.com` to `https://tuckbick.com`, keeping the path and query string.
+- Google Search Console and Bing Webmaster Tools have `tuckbick.com` as a Domain property, verified by DNS TXT records, with `sitemap.xml` submitted.
 - Web Analytics injects its beacon at the edge and collects real-user Core Web Vitals, with no cookies or personal data. The beacon reports to `/cdn-cgi/rum`, which the allowlist doesn't block. See "Real-user data" in `docs/performance.md`.
